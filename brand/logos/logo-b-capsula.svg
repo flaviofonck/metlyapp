@@ -1,0 +1,43 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 140" role="img" aria-label="METLY">
+  <defs>
+    <linearGradient id="lg-b-violet" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#7B61FF"></stop>
+      <stop offset="100%" stop-color="#5840E6"></stop>
+    </linearGradient>
+    <linearGradient id="lg-b-cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00E6FF"></stop>
+      <stop offset="100%" stop-color="#00B8CC"></stop>
+    </linearGradient>
+  </defs>
+
+  
+  <g transform="translate(20,30)">
+    
+    <path d="M40 0 H40 a40 40 0 0 0 0 80 H40 Z" fill="url(#lg-b-violet)"></path>
+    
+    <path d="M40 0 H40 a40 40 0 0 1 0 80 H40 Z" fill="url(#lg-b-cyan)" transform="translate(0,0)"></path>
+
+    
+  </g>
+
+  
+  <g transform="translate(20,30)">
+    
+    <path d="M40 0 a40 40 0 0 0 0 80 Z" fill="url(#lg-b-violet)"></path>
+    
+    <path d="M40 0 a40 40 0 0 1 0 80 Z" fill="url(#lg-b-cyan)"></path>
+    
+    <rect x="38" y="-2" width="4" height="84" fill="#1A0033"></rect>
+    
+    <circle cx="40" cy="40" r="9" fill="#1A0033"></circle>
+    <circle cx="40" cy="40" r="4" fill="#FAF8FF"></circle>
+  </g>
+
+  
+  <g transform="translate(140,0)" font-family="Space Grotesk, system-ui, sans-serif" font-weight="700" font-size="78" letter-spacing="-2">
+    <text x="0" y="92" fill="#1A0033">MET</text>
+    <circle cx="160" cy="68" r="7" fill="#00E6FF"></circle>
+    <text x="180" y="92" fill="#1A0033">LY</text>
+  </g>
+</svg>

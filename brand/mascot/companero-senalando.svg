@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 280" role="img" aria-label="Compañero METLY · Señalando">
+  <defs>
+    <linearGradient id="m3-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#5840E6"></stop>
+      <stop offset="100%" stop-color="#2A1050"></stop>
+    </linearGradient>
+    <linearGradient id="m3-belly" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#A594FF"></stop>
+      <stop offset="100%" stop-color="#7B61FF"></stop>
+    </linearGradient>
+    <radialGradient id="m3-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFFF"></stop>
+      <stop offset="40%" stop-color="#6FF1FF"></stop>
+      <stop offset="100%" stop-color="#00E6FF"></stop>
+    </radialGradient>
+    <radialGradient id="m3-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00E6FF" stop-opacity="0.55"></stop>
+      <stop offset="100%" stop-color="#00E6FF" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="120" cy="260" rx="60" ry="6" fill="#1A0033" opacity="0.18"></ellipse>
+  <circle cx="120" cy="160" r="80" fill="url(#m3-glow)"></circle>
+
+  <path d="M120 70 C 170 70, 200 110, 200 160 C 200 210, 170 240, 120 240 C 70 240, 40 210, 40 160 C 40 110, 70 70, 120 70 Z" fill="url(#m3-body)"></path>
+  <path d="M120 130 C 150 130, 170 150, 170 175 C 170 210, 145 230, 120 230 C 95 230, 70 210, 70 175 C 70 150, 90 130, 120 130 Z" fill="url(#m3-belly)" opacity="0.55"></path>
+
+  <g transform="translate(120,170)">
+    <circle r="22" fill="#1A0033"></circle>
+    <circle r="16" fill="url(#m3-core)"></circle>
+    <circle r="6" fill="#FFFFFF"></circle>
+  </g>
+
+  <g fill="#FAF8FF">
+    <path d="M94 132 Q102 128 108 134" stroke="#FAF8FF" stroke-width="3" fill="none" stroke-linecap="round"></path>
+    <path d="M132 132 Q140 128 146 134" stroke="#FAF8FF" stroke-width="3" fill="none" stroke-linecap="round"></path>
+  </g>
+
+  <path d="M100 152 Q120 168 140 152" stroke="#00E6FF" stroke-width="3" fill="none" stroke-linecap="round"></path>
+
+  <g>
+    <path d="M40 175 C 20 165, 10 145, 18 130 C 28 115, 50 120, 55 140 Z" fill="url(#m3-body)"></path>
+    <circle cx="20" cy="130" r="10" fill="url(#m3-body)"></circle>
+  </g>
+
+  <g>
+    <path d="M195 165 C 220 130, 240 90, 230 70 C 220 55, 195 65, 190 90 C 188 110, 188 130, 192 150 Z" fill="url(#m3-body)"></path>
+    <circle cx="225" cy="62" r="9" fill="#00E6FF"></circle>
+    <circle cx="225" cy="62" r="14" fill="#00E6FF" opacity="0.25"></circle>
+    <g stroke="#00E6FF" stroke-width="2" stroke-linecap="round" opacity="0.7">
+      <line x1="225" y1="42" x2="225" y2="36"></line>
+      <line x1="240" y1="48" x2="244" y2="44"></line>
+      <line x1="245" y1="62" x2="251" y2="62"></line>
+      <line x1="240" y1="76" x2="244" y2="80"></line>
+    </g>
+  </g>
+</svg>

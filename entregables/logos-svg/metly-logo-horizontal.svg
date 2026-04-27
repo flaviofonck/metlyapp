@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 140" role="img" aria-label="METLY">
+  <defs>
+    <linearGradient id="lg-a-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7B61FF"></stop>
+      <stop offset="100%" stop-color="#00E6FF"></stop>
+    </linearGradient>
+    <radialGradient id="lg-a-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00E6FF" stop-opacity="0.6"></stop>
+      <stop offset="100%" stop-color="#00E6FF" stop-opacity="0"></stop>
+    </radialGradient>
+  </defs>
+  <g transform="translate(20,20)">
+    <circle cx="50" cy="50" r="55" fill="url(#lg-a-glow)"></circle>
+    <g stroke="url(#lg-a-grad)" stroke-width="6" stroke-linecap="round" fill="none">
+      <line x1="10" y1="86" x2="10" y2="14"></line>
+      <line x1="10" y1="14" x2="50" y2="50"></line>
+      <line x1="50" y1="50" x2="90" y2="14"></line>
+      <line x1="90" y1="14" x2="90" y2="86"></line>
+    </g>
+    <g>
+      <circle cx="10" cy="14" r="8" fill="#1A0033"></circle>
+      <circle cx="10" cy="14" r="4" fill="#00E6FF"></circle>
+      <circle cx="90" cy="14" r="8" fill="#1A0033"></circle>
+      <circle cx="90" cy="14" r="4" fill="#7B61FF"></circle>
+      <circle cx="50" cy="50" r="10" fill="#1A0033"></circle>
+      <circle cx="50" cy="50" r="5" fill="#00E6FF"></circle>
+      <circle cx="10" cy="86" r="8" fill="#1A0033"></circle>
+      <circle cx="10" cy="86" r="4" fill="#7B61FF"></circle>
+      <circle cx="90" cy="86" r="8" fill="#1A0033"></circle>
+      <circle cx="90" cy="86" r="4" fill="#00E6FF"></circle>
+    </g>
+  </g>
+  <g transform="translate(150,0)" font-family="Space Grotesk, system-ui, sans-serif" font-weight="600" font-size="78" fill="#1A0033" letter-spacing="-2">
+    <text x="0" y="92">METLY</text>
+    <circle cx="290" cy="86" r="6" fill="#00E6FF"></circle>
+  </g>
+</svg>

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>METLY · Brand Canvas</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="brand/tokens.css"/>
+<style>
+body { background: #0E001D; font-family: var(--metly-font-text); }
+.ab { background: var(--metly-paper); padding: 48px; box-sizing: border-box; }
+.ab.dark { background: var(--grad-midnight); color: var(--metly-paper); }
+.eyebrow { font-family: var(--metly-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--metly-violet); margin-bottom: 12px; }
+.dark .eyebrow { color: var(--metly-cyan); }
+.h { font-family: var(--metly-font-display); font-size: 32px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; margin: 0 0 12px; }
+.lede { font-size: 16px; color: var(--metly-graphite); line-height: 1.5; }
+.dark .lede { color: var(--metly-mist); }
+.center { display: flex; align-items: center; justify-content: center; }
+.col { display: flex; flex-direction: column; }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="design-canvas.jsx"></script>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const {useState} = React;
+
+function Logo({src, w}) { return <object data={src} type="image/svg+xml" style={{width: w || '100%', maxHeight: 200}}/>; }
+
+function App() {
+  return (
+    <DCCanvas title="METLY · Brand Canvas" subtitle="Tres direcciones de logo · paleta · mascota · aplicaciones — vista comparativa">
+
+      <DCSection id="logos" title="Direcciones de Logo">
+        <DCArtboard id="a" label="A · Nodo M ★ recomendado" width={720} height={360}>
+          <div className="ab center"><Logo src="brand/logos/logo-a-nodo-m.svg" w={520}/></div>
+        </DCArtboard>
+        <DCArtboard id="b" label="B · Cápsula MET·LY" width={720} height={360}>
+          <div className="ab center"><Logo src="brand/logos/logo-b-capsula.svg" w={520}/></div>
+        </DCArtboard>
+        <DCArtboard id="c" label="C · Monograma orbital" width={720} height={360}>
+          <div className="ab center"><Logo src="brand/logos/logo-c-monograma.svg" w={520}/></div>
+        </DCArtboard>
+        <DCArtboard id="a-dark" label="A · sobre midnight" width={720} height={360}>
+          <div className="ab dark center"><object data="brand/logos/logo-a-nodo-m.svg" type="image/svg+xml" style={{width:520, filter:'invert(1) hue-rotate(180deg) brightness(1.4)'}}/></div>
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="paleta" title="Paleta">
+        <DCArtboard id="core" label="Brand core" width={1080} height={360}>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',height:'100%'}}>
+            <div style={{background:'#1A0033',color:'white',padding:32,display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+              <div><div className="eyebrow" style={{color:'rgba(255,255,255,0.7)'}}>Primario</div><div className="h" style={{color:'white'}}>Midnight</div></div>
+              <div style={{fontFamily:'var(--metly-font-mono)',fontSize:13}}>#1A0033 · PMS 2755 C</div>
+            </div>
+            <div style={{background:'#7B61FF',color:'white',padding:32,display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+              <div><div className="eyebrow" style={{color:'rgba(255,255,255,0.85)'}}>Estratégico</div><div className="h" style={{color:'white'}}>Electric Violet</div></div>
+              <div style={{fontFamily:'var(--metly-font-mono)',fontSize:13}}>#7B61FF · PMS 2725 C</div>
+            </div>
+            <div style={{background:'#00E6FF',color:'#1A0033',padding:32,display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+              <div><div className="eyebrow">Tecnológico</div><div className="h">Neon Cyan</div></div>
+              <div style={{fontFamily:'var(--metly-font-mono)',fontSize:13}}>#00E6FF · PMS 311 C</div>
+            </div>
+          </div>
+        </DCArtboard>
+        <DCArtboard id="grad" label="Gradientes oficiales" width={1080} height={200}>
+          <div style={{display:'grid',gridTemplateColumns:'1fr 1fr 1fr',height:'100%'}}>
+            <div style={{background:'var(--grad-aurora)',color:'white',padding:24,display:'flex',alignItems:'flex-end',fontFamily:'var(--metly-font-display)',fontSize:24,fontWeight:600}}>Aurora</div>
+            <div style={{background:'var(--grad-violet-cyan)',color:'white',padding:24,display:'flex',alignItems:'flex-end',fontFamily:'var(--metly-font-display)',fontSize:24,fontWeight:600}}>Violet → Cyan</div>
+            <div style={{background:'var(--grad-midnight)',color:'white',padding:24,display:'flex',alignItems:'flex-end',fontFamily:'var(--metly-font-display)',fontSize:24,fontWeight:600}}>Midnight</div>
+          </div>
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="mascota" title="Compañero METLY · 3 poses">
+        <DCArtboard id="m1" label="Saludo" width={400} height={500}>
+          <div className="ab center" style={{background:'var(--grad-soft)'}}><object data="brand/mascot/companero-saludo.svg" type="image/svg+xml" style={{height:380}}/></div>
+        </DCArtboard>
+        <DCArtboard id="m2" label="Analizando" width={400} height={500}>
+          <div className="ab center" style={{background:'var(--grad-soft)'}}><object data="brand/mascot/companero-analizando.svg" type="image/svg+xml" style={{height:380}}/></div>
+        </DCArtboard>
+        <DCArtboard id="m3" label="Insight" width={400} height={500}>
+          <div className="ab center" style={{background:'var(--grad-soft)'}}><object data="brand/mascot/companero-senalando.svg" type="image/svg+xml" style={{height:380}}/></div>
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="aplicaciones" title="Aplicaciones">
+        <DCArtboard id="login" label="Login screen" width={1280} height={720}>
+          <div className="ab dark" style={{padding:0,height:'100%',display:'grid',gridTemplateColumns:'1fr 420px',position:'relative',overflow:'hidden'}}>
+            <div style={{position:'absolute',right:-120,bottom:-120,width:400,height:400,background:'radial-gradient(circle,rgba(0,230,255,0.3),transparent 60%)',filter:'blur(40px)'}}/>
+            <div style={{padding:48,position:'relative',display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+              <div style={{fontFamily:'var(--metly-font-display)',fontSize:28,fontWeight:700}}>MET<span style={{color:'#00E6FF'}}>LY</span></div>
+              <div>
+                <div style={{fontFamily:'var(--metly-font-display)',fontSize:64,fontWeight:600,letterSpacing:'-0.02em',lineHeight:1.05}}>La gestión<br/>al día.<br/>Sin esfuerzo.</div>
+                <p style={{color:'var(--metly-mist)',fontSize:18,marginTop:16}}>SST, Calidad y Cumplimiento — todo en un solo lugar.</p>
+              </div>
+              <div style={{fontFamily:'var(--metly-font-mono)',fontSize:11,color:'var(--metly-stone)',letterSpacing:'0.08em',textTransform:'uppercase'}}>METD Consultores · v2026.04</div>
+            </div>
+            <div style={{background:'var(--metly-paper)',color:'var(--metly-ink)',padding:40,alignSelf:'center',margin:32,borderRadius:18,boxShadow:'var(--shadow-lg)',position:'relative'}}>
+              <div style={{fontFamily:'var(--metly-font-display)',fontSize:24,fontWeight:600}}>Bienvenido de vuelta</div>
+              <div style={{fontSize:13,color:'var(--metly-graphite)',margin:'4px 0 24px'}}>Ingresa con tu correo corporativo.</div>
+              <div style={{fontFamily:'var(--metly-font-mono)',fontSize:11,textTransform:'uppercase',letterSpacing:'0.1em',color:'var(--metly-graphite)',marginBottom:6}}>Correo</div>
+              <input style={{width:'100%',padding:'12px 14px',borderRadius:8,border:'1px solid var(--metly-mist)',fontFamily:'var(--metly-font-text)',fontSize:14,boxSizing:'border-box'}} value="laura@acme.co" readOnly/>
+              <div style={{fontFamily:'var(--metly-font-mono)',fontSize:11,textTransform:'uppercase',letterSpacing:'0.1em',color:'var(--metly-graphite)',marginBottom:6,marginTop:14}}>Contraseña</div>
+              <input style={{width:'100%',padding:'12px 14px',borderRadius:8,border:'1px solid var(--metly-mist)',fontFamily:'var(--metly-font-text)',fontSize:14,boxSizing:'border-box'}} type="password" value="••••••••" readOnly/>
+              <button style={{width:'100%',padding:14,borderRadius:8,border:0,background:'var(--grad-violet-cyan)',color:'white',fontWeight:600,fontSize:15,marginTop:20,cursor:'pointer'}}>Entrar a METLY</button>
+            </div>
+          </div>
+        </DCArtboard>
+
+        <DCArtboard id="li" label="LinkedIn cover · 1584×396" width={1280} height={320}>
+          <div style={{height:'100%',background:'var(--grad-midnight)',position:'relative',overflow:'hidden',padding:48,display:'flex',alignItems:'center',justifyContent:'space-between',color:'var(--metly-paper)'}}>
+            <div style={{position:'absolute',right:-80,top:-100,width:360,height:360,background:'radial-gradient(circle,rgba(0,230,255,0.4),transparent 60%)',filter:'blur(30px)'}}/>
+            <div style={{position:'relative'}}>
+              <div style={{fontFamily:'var(--metly-font-display)',fontSize:64,fontWeight:700,letterSpacing:'-0.03em',lineHeight:1}}>La gestión.<br/><em style={{fontStyle:'normal',color:'#00E6FF'}}>Al día.</em></div>
+              <p style={{fontSize:18,color:'var(--metly-mist)',marginTop:8}}>METLY · SST · Calidad · Cumplimiento</p>
+            </div>
+            <object data="brand/logos/logo-a-nodo-m.svg" type="image/svg+xml" style={{width:240,filter:'invert(1) hue-rotate(180deg) brightness(1.4)',position:'relative'}}/>
+          </div>
+        </DCArtboard>
+
+        <DCArtboard id="favicon" label="Favicon · App icon" width={720} height={240}>
+          <div className="ab" style={{display:'flex',gap:24,alignItems:'center',height:'100%'}}>
+            {[128,64,32,16].map(s=>(
+              <div key={s} style={{width:s,height:s,borderRadius:s*0.18,background:'var(--metly-midnight)',display:'flex',alignItems:'center',justifyContent:'center',flexShrink:0}}>
+                {s>=32 ? (
+                  <svg width={s*0.65} height={s*0.65} viewBox="0 0 100 100">
+                    <defs><linearGradient id={`fg${s}`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#7B61FF"/><stop offset="1" stopColor="#00E6FF"/></linearGradient></defs>
+                    <path d="M 50 2 A 48 48 0 1 1 5 75" fill="none" stroke={`url(#fg${s})`} strokeWidth="8" strokeLinecap="round"/>
+                    <circle cx="5" cy="75" r="9" fill="#00E6FF"/>
+                    <text x="50" y="68" textAnchor="middle" fontFamily="Space Grotesk" fontWeight="700" fontSize="52" fill="#FAF8FF" letterSpacing="-2">M</text>
+                  </svg>
+                ) : (
+                  <span style={{color:'#00E6FF',fontFamily:'Space Grotesk',fontSize:s*0.85,fontWeight:700,lineHeight:1}}>M</span>
+                )}
+              </div>
+            ))}
+            <div style={{marginLeft:'auto',fontFamily:'var(--metly-font-mono)',fontSize:11,color:'var(--metly-graphite)',textTransform:'uppercase',letterSpacing:'0.08em'}}>128 · 64 · 32 · 16 px</div>
+          </div>
+        </DCArtboard>
+      </DCSection>
+
+      <DCSection id="tipo" title="Tipografía">
+        <DCArtboard id="display" label="Space Grotesk · Display" width={1080} height={300}>
+          <div className="ab" style={{display:'flex',flexDirection:'column',justifyContent:'center',height:'100%'}}>
+            <div className="eyebrow">Display · Headlines</div>
+            <div style={{fontFamily:'Space Grotesk',fontWeight:600,fontSize:88,letterSpacing:'-0.03em',lineHeight:0.98}}>La ciencia de lo simple.</div>
+          </div>
+        </DCArtboard>
+        <DCArtboard id="text" label="Geist · Texto + Mono" width={1080} height={300}>
+          <div className="ab" style={{display:'flex',flexDirection:'column',justifyContent:'center',height:'100%',gap:16}}>
+            <div style={{fontFamily:'Geist',fontSize:32,lineHeight:1.4,color:'var(--metly-graphite)'}}>Cumplimiento activo, no estático. METLY revisa por ti.</div>
+            <div style={{fontFamily:'Geist Mono',fontSize:20}}>RES-2024-0871 · 99.4% uptime</div>
+          </div>
+        </DCArtboard>
+      </DCSection>
+
+    </DCCanvas>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App/>);
+</script>
+</body>
+</html>

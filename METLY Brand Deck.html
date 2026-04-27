@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<title>METLY · Brand Deck</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="brand/tokens.css"/>
+<script src="deck-stage.js"></script>
+<style>
+body { background: #0E001D; margin: 0; }
+deck-stage { background: #0E001D; }
+section {
+  width: 1920px; height: 1080px;
+  background: var(--metly-paper);
+  color: var(--metly-ink);
+  font-family: var(--metly-font-text);
+  position: relative; overflow: hidden;
+  padding: 96px 120px;
+  display: flex; flex-direction: column;
+}
+section.dark { background: var(--grad-midnight); color: var(--metly-paper); }
+section.aurora { background: var(--grad-aurora); color: var(--metly-paper); }
+.eyebrow { font-family: var(--metly-font-mono); font-size: 18px; text-transform: uppercase; letter-spacing: 0.22em; color: var(--metly-violet); margin-bottom: 24px; }
+.dark .eyebrow, .aurora .eyebrow { color: var(--metly-cyan); }
+h1 { font-family: var(--metly-font-display); font-size: 180px; font-weight: 700; letter-spacing: -0.04em; line-height: 0.92; margin: 0 0 32px; }
+h2 { font-family: var(--metly-font-display); font-size: 96px; font-weight: 600; letter-spacing: -0.03em; line-height: 1.02; margin: 0 0 32px; }
+h3 { font-family: var(--metly-font-display); font-size: 56px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; margin: 0 0 24px; }
+p, li { font-size: 32px; line-height: 1.45; }
+.lede { font-size: 40px; line-height: 1.4; color: var(--metly-graphite); max-width: 32ch; }
+.dark .lede, .aurora .lede { color: var(--metly-mist); }
+.foot { position: absolute; bottom: 48px; left: 120px; right: 120px; display: flex; justify-content: space-between; font-family: var(--metly-font-mono); font-size: 16px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--metly-stone); }
+.aurora-blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; }
+.grad-text { background: var(--grad-violet-cyan); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.row { display: flex; gap: 48px; }
+.col { flex: 1; }
+.swatch-deck { padding: 48px; border-radius: 18px; min-height: 360px; display: flex; flex-direction: column; justify-content: space-between; }
+.swatch-deck .vals { font-family: var(--metly-font-mono); font-size: 18px; line-height: 1.7; }
+.swatch-deck .name { font-family: var(--metly-font-display); font-size: 44px; font-weight: 600; letter-spacing: -0.01em; }
+.mark-big { width: 240px; height: 240px; }
+.tag { display: inline-block; font-family: var(--metly-font-mono); font-size: 18px; letter-spacing: 0.18em; text-transform: uppercase; padding: 12px 24px; border-radius: 999px; background: rgba(255,255,255,0.1); color: var(--metly-cyan); margin-bottom: 32px; }
+</style>
+</head>
+<body>
+<script type="application/json" id="speaker-notes">["","","","","","","","","",""]</script>
+
+<deck-stage>
+
+<!-- 01 Cover -->
+<section class="dark" data-screen-label="01 Cover">
+  <div class="aurora-blob" style="width:800px;height:800px;background:rgba(0,230,255,0.4);right:-200px;top:-200px;"></div>
+  <div class="aurora-blob" style="width:600px;height:600px;background:rgba(123,97,255,0.5);left:-100px;bottom:-100px;"></div>
+  <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;">
+    <span class="tag">Brand Identity · v1.0</span>
+    <h1 style="color:var(--metly-paper);">La ciencia<br/>de <em style="font-style:normal;" class="grad-text">lo simple.</em></h1>
+    <p class="lede" style="font-size:44px;">Identidad de marca para METLY — el sistema integral de gestión que transforma el rigor normativo en una experiencia ágil.</p>
+  </div>
+  <div class="foot"><span>METD Consultores</span><span>METLY · Brand Book</span><span>2026</span></div>
+</section>
+
+<!-- 02 Concepto -->
+<section data-screen-label="02 Concepto">
+  <div class="eyebrow">Concepto</div>
+  <h2>MET <span style="color:var(--metly-cyan);">·</span> LY</h2>
+  <p class="lede" style="margin-bottom: 64px;">El nombre captura la dualidad de la marca: el ancla del rigor técnico y el motor de la agilidad digital.</p>
+  <div class="row" style="flex:1;">
+    <div class="col" style="background:var(--metly-midnight);color:var(--metly-paper);padding:64px;border-radius:24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <div class="eyebrow" style="color:var(--metly-violet-soft);">El ancla</div>
+      <div style="font-family:var(--metly-font-display);font-size:240px;font-weight:700;letter-spacing:-0.04em;line-height:1;">MET</div>
+      <p style="font-size:28px;color:var(--metly-mist);">Medicina · Metodología · Métricas. Seguridad, respaldo médico, precisión heredada de METD Consultores.</p>
+    </div>
+    <div class="col" style="background:var(--grad-violet-cyan);color:white;padding:64px;border-radius:24px;display:flex;flex-direction:column;justify-content:space-between;">
+      <div class="eyebrow" style="color:rgba(255,255,255,0.85);">El motor</div>
+      <div style="font-family:var(--metly-font-display);font-size:240px;font-weight:700;letter-spacing:-0.04em;line-height:1;">LY</div>
+      <p style="font-size:28px;color:rgba(255,255,255,0.92);">Lightly · Easily · Continuously. Modernidad, automatización, una herramienta que trabaja en tiempo real, 24/7.</p>
+    </div>
+  </div>
+  <div class="foot"><span>02 / 10</span><span>METLY · Concepto</span></div>
+</section>
+
+<!-- 03 Mantra -->
+<section class="aurora" data-screen-label="03 Mantra">
+  <div class="aurora-blob" style="width:600px;height:600px;background:rgba(0,230,255,0.4);right:-100px;top:-100px;"></div>
+  <div class="aurora-blob" style="width:500px;height:500px;background:rgba(123,97,255,0.5);left:-50px;bottom:-50px;"></div>
+  <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;">
+    <div class="eyebrow">Mantra de marca</div>
+    <h2 style="font-size:140px;line-height:0.98;max-width:18ch;">"La solidez de la métrica,<br/>la agilidad del mañana."</h2>
+    <p style="font-family:var(--metly-font-mono);font-size:24px;letter-spacing:0.18em;text-transform:uppercase;margin-top:48px;opacity:0.8;">— METLY</p>
+  </div>
+  <div class="foot"><span style="color:rgba(255,255,255,0.5);">03 / 10</span></div>
+</section>
+
+<!-- 04 Logo -->
+<section data-screen-label="04 Logo">
+  <div class="eyebrow">Sistema de logo · Dirección recomendada</div>
+  <h2>Nodo M.</h2>
+  <p class="lede">Cuatro nodos conectados forman una M abierta. Red de datos, integración, blindaje estructural — el corazón de METLY pulsa al centro.</p>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center;">
+    <object data="brand/logos/logo-a-nodo-m.svg" type="image/svg+xml" style="width:1100px;"></object>
+  </div>
+  <div class="foot"><span>04 / 10</span><span>Logo · Dir A</span></div>
+</section>
+
+<!-- 05 Logo Variants -->
+<section class="dark" data-screen-label="05 Logo Variants">
+  <div class="eyebrow">Variantes del sistema</div>
+  <h2 style="color:var(--metly-paper);">Tres direcciones.</h2>
+  <div class="row" style="flex:1;align-items:center;gap:32px;">
+    <div class="col" style="background:rgba(255,255,255,0.04);border-radius:18px;padding:48px;height:520px;display:flex;flex-direction:column;justify-content:space-between;">
+      <object data="brand/logos/logo-a-nodo-m.svg" type="image/svg+xml" style="width:100%;max-height:200px;"></object>
+      <div>
+        <div style="font-family:var(--metly-font-display);font-size:32px;font-weight:600;color:var(--metly-cyan);">A · Nodo M ★</div>
+        <p style="font-size:20px;color:var(--metly-mist);margin-top:12px;">Red de datos. Recomendado.</p>
+      </div>
+    </div>
+    <div class="col" style="background:rgba(255,255,255,0.04);border-radius:18px;padding:48px;height:520px;display:flex;flex-direction:column;justify-content:space-between;">
+      <object data="brand/logos/logo-b-capsula.svg" type="image/svg+xml" style="width:100%;max-height:200px;"></object>
+      <div>
+        <div style="font-family:var(--metly-font-display);font-size:32px;font-weight:600;color:var(--metly-paper);">B · Cápsula</div>
+        <p style="font-size:20px;color:var(--metly-mist);margin-top:12px;">Dualidad rigor + agilidad.</p>
+      </div>
+    </div>
+    <div class="col" style="background:rgba(255,255,255,0.04);border-radius:18px;padding:48px;height:520px;display:flex;flex-direction:column;justify-content:space-between;">
+      <object data="brand/logos/logo-c-monograma.svg" type="image/svg+xml" style="width:100%;max-height:200px;"></object>
+      <div>
+        <div style="font-family:var(--metly-font-display);font-size:32px;font-weight:600;color:var(--metly-paper);">C · Monograma</div>
+        <p style="font-size:20px;color:var(--metly-mist);margin-top:12px;">Para favicon / app icon.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><span style="color:var(--metly-stone);">05 / 10</span></div>
+</section>
+
+<!-- 06 Color -->
+<section data-screen-label="06 Color">
+  <div class="eyebrow">Paleta de marca</div>
+  <h2>Color.</h2>
+  <p class="lede" style="margin-bottom:48px;">Tres colores que conviven con disciplina. 60% neutros, 30% violeta, 10% cyan.</p>
+  <div class="row" style="flex:1;gap:32px;">
+    <div class="col swatch-deck" style="background:#1A0033;color:white;">
+      <div><div class="eyebrow" style="color:rgba(255,255,255,0.6);">Primario</div><div class="name">Midnight Purple</div></div>
+      <div class="vals">HEX&nbsp;#1A0033<br/>RGB&nbsp;26·0·51<br/>PMS&nbsp;2755 C</div>
+    </div>
+    <div class="col swatch-deck" style="background:#7B61FF;color:white;">
+      <div><div class="eyebrow" style="color:rgba(255,255,255,0.85);">Estratégico</div><div class="name">Electric Violet</div></div>
+      <div class="vals">HEX&nbsp;#7B61FF<br/>RGB&nbsp;123·97·255<br/>PMS&nbsp;2725 C</div>
+    </div>
+    <div class="col swatch-deck" style="background:#00E6FF;color:#1A0033;">
+      <div><div class="eyebrow">Tecnológico</div><div class="name">Neon Cyan</div></div>
+      <div class="vals">HEX&nbsp;#00E6FF<br/>RGB&nbsp;0·230·255<br/>PMS&nbsp;311 C</div>
+    </div>
+  </div>
+  <div class="foot"><span>06 / 10</span><span>Color</span></div>
+</section>
+
+<!-- 07 Tipografía -->
+<section data-screen-label="07 Tipografía">
+  <div class="eyebrow">Tipografía</div>
+  <h2>Space Grotesk + Geist.</h2>
+  <div style="flex:1;display:flex;flex-direction:column;justify-content:center;gap:48px;">
+    <div>
+      <div style="font-family:var(--metly-font-mono);font-size:18px;color:var(--metly-violet);text-transform:uppercase;letter-spacing:0.18em;margin-bottom:16px;">Space Grotesk · Display</div>
+      <div style="font-family:'Space Grotesk';font-weight:600;font-size:160px;letter-spacing:-0.03em;line-height:0.95;">La ciencia de lo simple.</div>
+    </div>
+    <div>
+      <div style="font-family:var(--metly-font-mono);font-size:18px;color:var(--metly-violet);text-transform:uppercase;letter-spacing:0.18em;margin-bottom:16px;">Geist · Texto</div>
+      <div style="font-family:'Geist';font-size:48px;line-height:1.4;color:var(--metly-graphite);max-width:38ch;">Cumplimiento activo, no estático. METLY revisa la matriz por ti y te avisa antes de cualquier cambio.</div>
+    </div>
+    <div style="font-family:'Geist Mono';font-size:36px;color:var(--metly-ink);">RES-2024-0871 · 99.4% uptime</div>
+  </div>
+  <div class="foot"><span>07 / 10</span><span>Tipografía</span></div>
+</section>
+
+<!-- 08 Mascot -->
+<section data-screen-label="08 Mascot">
+  <div class="eyebrow">Compañero METLY</div>
+  <h2>Un colega digital.</h2>
+  <p class="lede" style="margin-bottom:48px;">No es una mascota infantil. Forma redondeada, núcleo de luz cyan, presencia confiable.</p>
+  <div class="row" style="flex:1;align-items:center;gap:48px;">
+    <div class="col" style="text-align:center;background:var(--grad-soft);padding:48px;border-radius:24px;height:520px;display:flex;flex-direction:column;justify-content:space-between;">
+      <object data="brand/mascot/companero-saludo.svg" type="image/svg+xml" style="height:340px;"></object>
+      <div style="font-family:var(--metly-font-display);font-size:32px;font-weight:600;">Saludo</div>
+    </div>
+    <div class="col" style="text-align:center;background:var(--grad-soft);padding:48px;border-radius:24px;height:520px;display:flex;flex-direction:column;justify-content:space-between;">
+      <object data="brand/mascot/companero-analizando.svg" type="image/svg+xml" style="height:340px;"></object>
+      <div style="font-family:var(--metly-font-display);font-size:32px;font-weight:600;">Analizando</div>
+    </div>
+    <div class="col" style="text-align:center;background:var(--grad-soft);padding:48px;border-radius:24px;height:520px;display:flex;flex-direction:column;justify-content:space-between;">
+      <object data="brand/mascot/companero-senalando.svg" type="image/svg+xml" style="height:340px;"></object>
+      <div style="font-family:var(--metly-font-display);font-size:32px;font-weight:600;">Insight</div>
+    </div>
+  </div>
+  <div class="foot"><span>08 / 10</span><span>Mascot</span></div>
+</section>
+
+<!-- 09 Voz -->
+<section data-screen-label="09 Voz">
+  <div class="eyebrow">Voz &amp; tono</div>
+  <h2>Tú, no usted.</h2>
+  <div class="row" style="flex:1;gap:32px;margin-top:32px;">
+    <div class="col" style="background:rgba(46,230,168,0.08);border:2px solid rgba(46,230,168,0.4);border-radius:18px;padding:48px;">
+      <div style="font-family:var(--metly-font-mono);font-size:20px;color:#1f9d6f;text-transform:uppercase;letter-spacing:0.16em;margin-bottom:24px;">✓ Sí decimos</div>
+      <ul style="padding-left:24px;margin:0;line-height:1.6;font-size:28px;color:var(--metly-ink);">
+        <li style="margin-bottom:20px;">"Tu matriz legal está al día."</li>
+        <li style="margin-bottom:20px;">"En tres clics, capturas el incidente."</li>
+        <li style="margin-bottom:20px;">"METLY revisa por ti."</li>
+        <li>"Hoy 4 de 12 actividades listas. Vas bien."</li>
+      </ul>
+    </div>
+    <div class="col" style="background:rgba(255,92,122,0.06);border:2px solid rgba(255,92,122,0.4);border-radius:18px;padding:48px;">
+      <div style="font-family:var(--metly-font-mono);font-size:20px;color:#c63a59;text-transform:uppercase;letter-spacing:0.16em;margin-bottom:24px;">✗ No decimos</div>
+      <ul style="padding-left:24px;margin:0;line-height:1.6;font-size:28px;color:var(--metly-graphite);">
+        <li style="margin-bottom:20px;">"De conformidad con la Resolución…"</li>
+        <li style="margin-bottom:20px;">"Sistema de gestión documental para…"</li>
+        <li style="margin-bottom:20px;">"Si no lo hace, podría ser sancionado."</li>
+        <li>"Sírvase diligenciar el formulario."</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><span>09 / 10</span><span>Voz</span></div>
+</section>
+
+<!-- 10 Cierre -->
+<section class="dark" data-screen-label="10 Cierre">
+  <div class="aurora-blob" style="width:700px;height:700px;background:rgba(0,230,255,0.3);right:-150px;bottom:-150px;"></div>
+  <div class="aurora-blob" style="width:500px;height:500px;background:rgba(123,97,255,0.4);left:-100px;top:-100px;"></div>
+  <div style="position:relative;z-index:1;flex:1;display:flex;flex-direction:column;justify-content:center;">
+    <div class="eyebrow" style="color:var(--metly-cyan);">Una última cosa</div>
+    <h2 style="color:var(--metly-paper);font-size:96px;max-width:24ch;">La marca es una promesa.<br/><span class="grad-text">La gente al final de la línea</span><br/>es quien la cobra.</h2>
+    <p class="lede" style="margin-top:48px;color:var(--metly-mist);">Cada decisión debe responder: ¿esto le hace la vida más simple a alguien que cuida la salud de otros? Si la respuesta es sí, vamos.</p>
+  </div>
+  <div class="foot"><span style="color:var(--metly-stone);">10 / 10</span><span style="color:var(--metly-stone);">METLY · La ciencia de lo simple</span></div>
+</section>
+
+</deck-stage>
+</body>
+</html>

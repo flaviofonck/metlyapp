@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <rect width="1600" height="900" fill="#FAF8FF"></rect>
+  <text x="80" y="120" font-family="Geist Mono" font-size="20" fill="#7B61FF" letter-spacing="3">METLY · PALETA</text>
+  <text x="80" y="200" font-family="Space Grotesk" font-weight="600" font-size="80" fill="#1A0033" letter-spacing="-2">Color.</text>
+
+  <g transform="translate(80,280)">
+    <rect width="460" height="500" rx="18" fill="#1A0033"></rect>
+    <text x="40" y="80" font-family="Geist Mono" font-size="16" fill="#BFB8D1" letter-spacing="2">PRIMARIO</text>
+    <text x="40" y="160" font-family="Space Grotesk" font-weight="600" font-size="44" fill="#FFFFFF" letter-spacing="-1">Midnight</text>
+    <text x="40" y="210" font-family="Space Grotesk" font-weight="600" font-size="44" fill="#FFFFFF" letter-spacing="-1">Purple</text>
+    <text x="40" y="420" font-family="Geist Mono" font-size="20" fill="#FFFFFF">HEX  #1A0033</text>
+    <text x="40" y="450" font-family="Geist Mono" font-size="20" fill="#FFFFFF">RGB  26 · 0 · 51</text>
+    <text x="40" y="480" font-family="Geist Mono" font-size="20" fill="#FFFFFF">PMS  2755 C</text>
+  </g>
+
+  <g transform="translate(560,280)">
+    <rect width="460" height="500" rx="18" fill="#7B61FF"></rect>
+    <text x="40" y="80" font-family="Geist Mono" font-size="16" fill="rgba(255,255,255,0.85)" letter-spacing="2">ESTRATÉGICO</text>
+    <text x="40" y="160" font-family="Space Grotesk" font-weight="600" font-size="44" fill="#FFFFFF" letter-spacing="-1">Electric</text>
+    <text x="40" y="210" font-family="Space Grotesk" font-weight="600" font-size="44" fill="#FFFFFF" letter-spacing="-1">Violet</text>
+    <text x="40" y="420" font-family="Geist Mono" font-size="20" fill="#FFFFFF">HEX  #7B61FF</text>
+    <text x="40" y="450" font-family="Geist Mono" font-size="20" fill="#FFFFFF">RGB  123 · 97 · 255</text>
+    <text x="40" y="480" font-family="Geist Mono" font-size="20" fill="#FFFFFF">PMS  2725 C</text>
+  </g>
+
+  <g transform="translate(1040,280)">
+    <rect width="460" height="500" rx="18" fill="#00E6FF"></rect>
+    <text x="40" y="80" font-family="Geist Mono" font-size="16" fill="#1A0033" letter-spacing="2">TECNOLÓGICO</text>
+    <text x="40" y="160" font-family="Space Grotesk" font-weight="600" font-size="44" fill="#1A0033" letter-spacing="-1">Neon</text>
+    <text x="40" y="210" font-family="Space Grotesk" font-weight="600" font-size="44" fill="#1A0033" letter-spacing="-1">Cyan</text>
+    <text x="40" y="420" font-family="Geist Mono" font-size="20" fill="#1A0033">HEX  #00E6FF</text>
+    <text x="40" y="450" font-family="Geist Mono" font-size="20" fill="#1A0033">RGB  0 · 230 · 255</text>
+    <text x="40" y="480" font-family="Geist Mono" font-size="20" fill="#1A0033">PMS  311 C</text>
+  </g>
+
+  <text x="80" y="850" font-family="Geist Mono" font-size="14" fill="#404040" letter-spacing="2">METD CONSULTORES · METLY · 2026</text>
+</svg>

@@ -1,0 +1,104 @@
+/* ═══════════════════════════════════════════════════════════
+   METLY · Brand tokens
+   La ciencia de lo simple.
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  /* ─── Color · Brand core ─────────────────────────────── */
+  --metly-midnight:       #1A0033;   /* fondo principal, autoridad */
+  --metly-midnight-deep:  #0E001D;   /* base aún más profunda */
+  --metly-midnight-soft:  #2A1050;   /* superficies elevadas */
+  --metly-violet:         #7B61FF;   /* electric violet · estratégico */
+  --metly-violet-soft:    #A594FF;
+  --metly-violet-deep:    #5840E6;
+  --metly-cyan:           #00E6FF;   /* neon cyan · tecnología */
+  --metly-cyan-soft:      #6FF1FF;
+  --metly-cyan-deep:      #00B8CC;
+
+  /* ─── Color · Neutrals ───────────────────────────────── */
+  --metly-white:          #FFFFFF;
+  --metly-paper:          #FAF8FF;   /* blanco con leve toque violeta */
+  --metly-mist:           #ECE7F7;
+  --metly-stone:          #BFB8D1;
+  --metly-graphite:       #404040;
+  --metly-ink:            #14081F;
+  --metly-black:          #000000;
+
+  /* ─── Color · Semánticos ─────────────────────────────── */
+  --metly-success:        #2EE6A8;   /* verde menta, juega bien con cyan */
+  --metly-warning:        #FFB547;
+  --metly-danger:         #FF5C7A;
+  --metly-info:           var(--metly-cyan);
+
+  /* ─── Type ───────────────────────────────────────────── */
+  --metly-font-display: "Space Grotesk", "Geist", system-ui, sans-serif;
+  --metly-font-text:    "Geist", "Inter", system-ui, sans-serif;
+  --metly-font-mono:    "Geist Mono", "JetBrains Mono", ui-monospace, monospace;
+
+  /* ─── Type scale (modular, 1.25) ─────────────────────── */
+  --fs-12: 12px;
+  --fs-14: 14px;
+  --fs-16: 16px;
+  --fs-18: 18px;
+  --fs-22: 22px;
+  --fs-28: 28px;
+  --fs-36: 36px;
+  --fs-48: 48px;
+  --fs-64: 64px;
+  --fs-88: 88px;
+  --fs-120: 120px;
+
+  /* ─── Spacing (4-pt) ─────────────────────────────────── */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  --sp-10: 128px;
+
+  /* ─── Radius ─────────────────────────────────────────── */
+  --r-xs: 4px;
+  --r-sm: 8px;
+  --r-md: 12px;
+  --r-lg: 18px;
+  --r-xl: 28px;
+  --r-pill: 999px;
+
+  /* ─── Elevation ──────────────────────────────────────── */
+  --shadow-sm: 0 1px 2px rgba(20, 8, 31, 0.06), 0 1px 3px rgba(20, 8, 31, 0.04);
+  --shadow-md: 0 4px 12px rgba(20, 8, 31, 0.08), 0 2px 4px rgba(20, 8, 31, 0.04);
+  --shadow-lg: 0 16px 40px rgba(26, 0, 51, 0.18), 0 4px 12px rgba(26, 0, 51, 0.08);
+  --glow-cyan: 0 0 24px rgba(0, 230, 255, 0.45), 0 0 64px rgba(0, 230, 255, 0.18);
+  --glow-violet: 0 0 24px rgba(123, 97, 255, 0.45), 0 0 64px rgba(123, 97, 255, 0.18);
+
+  /* ─── Gradients · the brand signature ────────────────── */
+  --grad-aurora: linear-gradient(135deg, #1A0033 0%, #5840E6 45%, #00E6FF 100%);
+  --grad-violet-cyan: linear-gradient(120deg, #7B61FF 0%, #00E6FF 100%);
+  --grad-midnight: linear-gradient(180deg, #1A0033 0%, #0E001D 100%);
+  --grad-soft: linear-gradient(135deg, #FAF8FF 0%, #ECE7F7 100%);
+}
+
+/* ─── Reset minimal ───────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--metly-font-text);
+  color: var(--metly-ink);
+  background: var(--metly-paper);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+
+/* ─── Type utilities ──────────────────────────────────── */
+.t-display { font-family: var(--metly-font-display); font-weight: 600; letter-spacing: -0.02em; line-height: 1.04; }
+.t-text { font-family: var(--metly-font-text); font-weight: 400; line-height: 1.55; }
+.t-mono { font-family: var(--metly-font-mono); font-weight: 400; letter-spacing: 0; }
+.t-eyebrow { font-family: var(--metly-font-mono); font-size: var(--fs-12); text-transform: uppercase; letter-spacing: 0.16em; color: var(--metly-violet); }

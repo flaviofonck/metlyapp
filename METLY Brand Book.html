@@ -1,0 +1,973 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>METLY · Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Geist:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="brand/tokens.css"/>
+<style>
+/* ───────────── Layout ───────────── */
+body { background: var(--metly-paper); }
+
+.shell { display: grid; grid-template-columns: 240px 1fr; min-height: 100vh; }
+
+/* ───────────── Sidebar ───────────── */
+.side {
+  position: sticky; top: 0; height: 100vh;
+  background: var(--grad-midnight);
+  color: var(--metly-paper);
+  padding: var(--sp-6) var(--sp-5);
+  display: flex; flex-direction: column; gap: var(--sp-6);
+  border-right: 1px solid rgba(255,255,255,0.06);
+}
+.side-brand { display: flex; align-items: center; gap: var(--sp-3); }
+.side-brand-mark { width: 36px; height: 36px; }
+.side-brand-name {
+  font-family: var(--metly-font-display); font-size: 22px; font-weight: 600;
+  letter-spacing: -0.02em;
+}
+.side-brand-name b { color: var(--metly-cyan); font-weight: 700; }
+.side-meta { font-family: var(--metly-font-mono); font-size: 11px; color: var(--metly-stone); letter-spacing: 0.12em; text-transform: uppercase; }
+.nav { display: flex; flex-direction: column; gap: 2px; flex: 1; }
+.nav-section { font-family: var(--metly-font-mono); font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--metly-stone); margin: var(--sp-4) 0 var(--sp-2); padding: 0 var(--sp-3); }
+.nav a {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px var(--sp-3); border-radius: var(--r-sm);
+  color: var(--metly-mist); text-decoration: none;
+  font-size: 14px; transition: background 0.15s, color 0.15s;
+}
+.nav a:hover { background: rgba(255,255,255,0.06); color: var(--metly-paper); }
+.nav a .num { font-family: var(--metly-font-mono); font-size: 11px; color: var(--metly-stone); }
+.nav a.active { background: rgba(123,97,255,0.18); color: var(--metly-paper); }
+.nav a.active .num { color: var(--metly-cyan); }
+.side-foot { font-size: 11px; color: var(--metly-stone); border-top: 1px solid rgba(255,255,255,0.08); padding-top: var(--sp-4); }
+
+/* ───────────── Main ───────────── */
+.main { padding: var(--sp-7) var(--sp-7) var(--sp-9); max-width: 1180px; }
+section.chapter { padding: var(--sp-8) 0; border-bottom: 1px solid var(--metly-mist); scroll-margin-top: 20px; }
+section.chapter:last-of-type { border-bottom: 0; }
+
+.eyebrow { font-family: var(--metly-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--metly-violet); margin-bottom: var(--sp-3); }
+.h1 { font-family: var(--metly-font-display); font-size: clamp(40px, 5vw, 72px); font-weight: 600; line-height: 1.02; letter-spacing: -0.03em; margin: 0 0 var(--sp-4); color: var(--metly-ink); }
+.h2 { font-family: var(--metly-font-display); font-size: 36px; font-weight: 600; letter-spacing: -0.02em; margin: 0 0 var(--sp-4); }
+.h3 { font-family: var(--metly-font-display); font-size: 22px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 var(--sp-3); }
+.lede { font-size: 22px; line-height: 1.45; color: var(--metly-graphite); max-width: 70ch; }
+.body { font-size: 16px; line-height: 1.65; color: var(--metly-graphite); max-width: 68ch; }
+.body p + p { margin-top: var(--sp-4); }
+.body strong { color: var(--metly-ink); }
+
+/* ───────────── Hero ───────────── */
+.hero { position: relative; padding: var(--sp-9) 0 var(--sp-8); overflow: hidden; }
+.hero-grid { position: absolute; inset: 0; opacity: 0.5; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(123,97,255,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(123,97,255,0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: radial-gradient(ellipse at top right, black 30%, transparent 70%);
+}
+.hero-aurora { position: absolute; right: -150px; top: -100px; width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(0,230,255,0.35), transparent 60%);
+  filter: blur(40px); pointer-events: none;
+}
+.hero-aurora.b { right: 100px; top: 200px; width: 360px; height: 360px;
+  background: radial-gradient(circle, rgba(123,97,255,0.4), transparent 60%);
+}
+.hero-content { position: relative; z-index: 1; }
+.hero-tagline { display: inline-flex; align-items: center; gap: var(--sp-2);
+  background: var(--metly-ink); color: var(--metly-paper);
+  padding: 8px 14px; border-radius: var(--r-pill);
+  font-family: var(--metly-font-mono); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
+  margin-bottom: var(--sp-5);
+}
+.hero-tagline .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--metly-cyan); box-shadow: var(--glow-cyan); }
+.hero h1 { font-family: var(--metly-font-display); font-size: clamp(64px, 9vw, 132px); font-weight: 700; letter-spacing: -0.04em; line-height: 0.92; margin: 0 0 var(--sp-5); color: var(--metly-ink); }
+.hero h1 em { font-style: normal; background: var(--grad-violet-cyan); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-sub { font-size: 26px; line-height: 1.4; color: var(--metly-graphite); max-width: 60ch; margin: 0 0 var(--sp-6); }
+.hero-meta { display: flex; gap: var(--sp-6); font-family: var(--metly-font-mono); font-size: 12px; color: var(--metly-graphite); flex-wrap: wrap; }
+.hero-meta div span { display: block; color: var(--metly-violet); margin-bottom: 2px; }
+
+/* ───────────── Cards & grids ───────────── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-5); }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-4); }
+@media (max-width: 900px) { .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; } }
+
+.card { background: white; border: 1px solid var(--metly-mist); border-radius: var(--r-lg); padding: var(--sp-5); }
+.card.dark { background: var(--metly-midnight); color: var(--metly-paper); border-color: var(--metly-midnight-soft); }
+.card.dark .h3 { color: var(--metly-paper); }
+.card.dark .body { color: var(--metly-mist); }
+
+/* ───────────── Color section ───────────── */
+.swatch { border-radius: var(--r-md); padding: var(--sp-5); display: flex; flex-direction: column; justify-content: space-between; min-height: 200px; position: relative; overflow: hidden; }
+.swatch .name { font-family: var(--metly-font-display); font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
+.swatch .vals { font-family: var(--metly-font-mono); font-size: 11px; line-height: 1.6; }
+.swatch.dark { color: var(--metly-paper); }
+.swatch.light { color: var(--metly-ink); border: 1px solid var(--metly-mist); }
+
+.color-row { display: flex; gap: 0; border-radius: var(--r-md); overflow: hidden; }
+.color-row > div { flex: 1; padding: var(--sp-4) var(--sp-3); font-family: var(--metly-font-mono); font-size: 11px; min-height: 100px; display: flex; flex-direction: column; justify-content: flex-end; }
+
+/* ───────────── Type section ───────────── */
+.type-spec { display: grid; grid-template-columns: 200px 1fr; gap: var(--sp-5); padding: var(--sp-5) 0; border-bottom: 1px solid var(--metly-mist); }
+.type-spec:last-child { border-bottom: 0; }
+.type-spec .meta { font-family: var(--metly-font-mono); font-size: 12px; color: var(--metly-graphite); }
+.type-spec .meta b { display: block; color: var(--metly-ink); margin-bottom: 4px; font-family: var(--metly-font-mono); }
+.type-sample { color: var(--metly-ink); }
+.type-sample.display { font-family: var(--metly-font-display); }
+.type-sample.text { font-family: var(--metly-font-text); }
+.type-sample.mono { font-family: var(--metly-font-mono); }
+
+/* ───────────── Logo showcase ───────────── */
+.logo-stage { background: var(--metly-paper); border: 1px solid var(--metly-mist); border-radius: var(--r-lg); padding: var(--sp-7); display: flex; align-items: center; justify-content: center; min-height: 200px; }
+.logo-stage.dark { background: var(--grad-midnight); border-color: var(--metly-midnight-soft); }
+.logo-stage svg { max-width: 100%; max-height: 120px; }
+.logo-meta { padding: var(--sp-3) 0; display: flex; justify-content: space-between; font-family: var(--metly-font-mono); font-size: 11px; color: var(--metly-graphite); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* ───────────── Mascot section ───────────── */
+.mascot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--sp-4); }
+.mascot-card { background: var(--grad-soft); border-radius: var(--r-lg); padding: var(--sp-5); text-align: center; }
+.mascot-card.dark { background: var(--grad-midnight); color: var(--metly-paper); }
+.mascot-card svg { height: 240px; margin: 0 auto var(--sp-4); }
+.mascot-card .pose { font-family: var(--metly-font-display); font-weight: 600; font-size: 18px; }
+.mascot-card .pose-sub { font-family: var(--metly-font-mono); font-size: 11px; color: var(--metly-graphite); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase; }
+.mascot-card.dark .pose-sub { color: var(--metly-stone); }
+
+/* ───────────── Icons ───────────── */
+.icon-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: var(--sp-3); }
+.icon-tile { background: white; border: 1px solid var(--metly-mist); border-radius: var(--r-md); padding: var(--sp-4); display: flex; flex-direction: column; align-items: center; gap: var(--sp-2); min-height: 110px; }
+.icon-tile svg { width: 32px; height: 32px; color: var(--metly-midnight); }
+.icon-tile .lbl { font-family: var(--metly-font-mono); font-size: 10px; color: var(--metly-graphite); text-transform: uppercase; letter-spacing: 0.06em; text-align: center; }
+@media (max-width: 900px) { .icon-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ───────────── Voice & rules ───────────── */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-4); }
+.do-dont .col { padding: var(--sp-5); border-radius: var(--r-md); border: 1px solid var(--metly-mist); }
+.do-dont .col.do { background: rgba(46,230,168,0.06); border-color: rgba(46,230,168,0.3); }
+.do-dont .col.dont { background: rgba(255,92,122,0.06); border-color: rgba(255,92,122,0.3); }
+.do-dont .col h4 { font-family: var(--metly-font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.16em; margin: 0 0 var(--sp-3); }
+.do-dont .col.do h4 { color: #1f9d6f; }
+.do-dont .col.dont h4 { color: #c63a59; }
+.do-dont ul { padding-left: var(--sp-4); margin: 0; line-height: 1.7; }
+.do-dont li { margin-bottom: var(--sp-2); }
+
+/* ───────────── Apps ───────────── */
+.app-mock { background: white; border-radius: var(--r-lg); border: 1px solid var(--metly-mist); overflow: hidden; }
+.favicon-row { display: flex; gap: var(--sp-4); align-items: center; padding: var(--sp-5); }
+.favicon { background: var(--metly-midnight); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.favicon.f16 { width: 16px; height: 16px; border-radius: 3px; }
+.favicon.f32 { width: 32px; height: 32px; border-radius: 6px; }
+.favicon.f64 { width: 64px; height: 64px; border-radius: 12px; }
+.favicon.f128 { width: 128px; height: 128px; border-radius: 24px; }
+.favicon.f128 .ico-mark { width: 64px; height: 64px; }
+.favicon.f64 .ico-mark { width: 36px; height: 36px; }
+.favicon.f32 .ico-mark { width: 22px; height: 22px; }
+.favicon.f16 .ico-mark { width: 11px; height: 11px; }
+
+/* Login mock */
+.login-mock { background: var(--grad-midnight); padding: var(--sp-6); border-radius: var(--r-lg); position: relative; overflow: hidden; min-height: 480px; display: grid; grid-template-columns: 1fr 360px; gap: var(--sp-6); }
+.login-mock::before { content: ""; position: absolute; right: -120px; bottom: -120px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0,230,255,0.25), transparent 60%); filter: blur(40px); }
+.login-side { color: var(--metly-paper); position: relative; z-index: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.login-side .lm-mark { display: flex; align-items: center; gap: var(--sp-2); font-family: var(--metly-font-display); font-size: 22px; font-weight: 700; }
+.login-side .lm-mark b { color: var(--metly-cyan); }
+.login-side h2 { font-family: var(--metly-font-display); font-size: 44px; font-weight: 600; line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 var(--sp-3); }
+.login-side p { color: var(--metly-mist); font-size: 16px; line-height: 1.5; max-width: 38ch; margin: 0; }
+.login-side .lm-foot { font-family: var(--metly-font-mono); font-size: 11px; color: var(--metly-stone); letter-spacing: 0.08em; text-transform: uppercase; }
+.login-card { background: var(--metly-paper); border-radius: var(--r-lg); padding: var(--sp-6); position: relative; z-index: 1; align-self: center; box-shadow: var(--shadow-lg); }
+.login-card label { display: block; font-family: var(--metly-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--metly-graphite); margin-bottom: 6px; margin-top: var(--sp-3); }
+.login-card input { width: 100%; padding: 12px 14px; border-radius: var(--r-sm); border: 1px solid var(--metly-mist); font-family: var(--metly-font-text); font-size: 14px; background: white; }
+.login-card input:focus { outline: 2px solid var(--metly-violet); outline-offset: 1px; }
+.login-card .btn { width: 100%; padding: 14px; border-radius: var(--r-sm); border: 0; background: var(--grad-violet-cyan); color: white; font-family: var(--metly-font-text); font-weight: 600; font-size: 15px; margin-top: var(--sp-5); cursor: pointer; }
+.login-card .h { font-family: var(--metly-font-display); font-size: 22px; font-weight: 600; margin: 0; letter-spacing: -0.01em; }
+.login-card .h-sub { font-size: 13px; color: var(--metly-graphite); margin: 4px 0 var(--sp-4); }
+
+/* LinkedIn cover */
+.li-cover { aspect-ratio: 4/1; border-radius: var(--r-md); background: var(--grad-midnight); position: relative; overflow: hidden; padding: var(--sp-6); display: flex; align-items: center; justify-content: space-between; color: var(--metly-paper); }
+.li-cover::before { content: ""; position: absolute; right: -80px; top: -100px; width: 360px; height: 360px; background: radial-gradient(circle, rgba(0,230,255,0.4), transparent 60%); filter: blur(30px); }
+.li-cover .li-text { position: relative; z-index: 1; }
+.li-cover .li-text h3 { font-family: var(--metly-font-display); font-size: 56px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; margin: 0 0 var(--sp-2); }
+.li-cover .li-text h3 em { font-style: normal; color: var(--metly-cyan); }
+.li-cover .li-text p { font-size: 18px; color: var(--metly-mist); margin: 0; }
+.li-cover .li-mark { position: relative; z-index: 1; }
+.li-cover .li-mark svg { width: 200px; }
+
+/* Email mock */
+.email-mock { background: white; border-radius: var(--r-lg); border: 1px solid var(--metly-mist); overflow: hidden; max-width: 600px; }
+.email-mock .em-head { background: var(--grad-midnight); padding: var(--sp-6); color: var(--metly-paper); }
+.em-head .lm-mark { display: flex; align-items: center; gap: var(--sp-2); font-family: var(--metly-font-display); font-weight: 700; font-size: 20px; }
+.em-head .lm-mark b { color: var(--metly-cyan); }
+.email-mock .em-body { padding: var(--sp-6); color: var(--metly-graphite); line-height: 1.6; }
+.email-mock .em-body h3 { font-family: var(--metly-font-display); font-size: 26px; color: var(--metly-ink); margin: 0 0 var(--sp-3); letter-spacing: -0.01em; }
+.email-mock .em-cta { display: inline-block; background: var(--metly-midnight); color: white; padding: 12px 22px; border-radius: var(--r-sm); text-decoration: none; font-family: var(--metly-font-text); font-weight: 600; font-size: 14px; margin: var(--sp-4) 0; }
+.email-mock .em-foot { padding: var(--sp-4) var(--sp-6); background: var(--metly-paper); font-family: var(--metly-font-mono); font-size: 11px; color: var(--metly-graphite); text-transform: uppercase; letter-spacing: 0.08em; }
+
+/* TOC scroll-spy active */
+@media (max-width: 900px) {
+  .shell { grid-template-columns: 1fr; }
+  .side { position: static; height: auto; }
+  .main { padding: var(--sp-5); }
+}
+
+/* Mantra */
+.mantra { background: var(--grad-aurora); color: var(--metly-paper); border-radius: var(--r-xl); padding: var(--sp-8); position: relative; overflow: hidden; }
+.mantra::before, .mantra::after { content: ""; position: absolute; border-radius: 50%; filter: blur(60px); }
+.mantra::before { width: 400px; height: 400px; background: rgba(0,230,255,0.4); right: -100px; top: -100px; }
+.mantra::after { width: 300px; height: 300px; background: rgba(123,97,255,0.5); left: -80px; bottom: -80px; }
+.mantra-inner { position: relative; z-index: 1; }
+.mantra blockquote { font-family: var(--metly-font-display); font-size: clamp(36px, 4vw, 56px); font-weight: 600; letter-spacing: -0.02em; line-height: 1.05; margin: 0; max-width: 22ch; }
+.mantra cite { font-family: var(--metly-font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.8; margin-top: var(--sp-5); display: block; font-style: normal; }
+
+/* Module pills */
+.module-list { display: grid; grid-template-columns: repeat(2,1fr); gap: var(--sp-3); }
+.module { background: white; border: 1px solid var(--metly-mist); border-radius: var(--r-md); padding: var(--sp-4); display: flex; gap: var(--sp-3); align-items: flex-start; }
+.module-ico { width: 40px; height: 40px; border-radius: var(--r-sm); display: flex; align-items: center; justify-content: center; background: var(--grad-violet-cyan); color: white; flex-shrink: 0; }
+.module-ico svg { width: 22px; height: 22px; }
+.module h4 { margin: 0 0 4px; font-family: var(--metly-font-display); font-size: 17px; font-weight: 600; }
+.module p { margin: 0; font-size: 13px; color: var(--metly-graphite); line-height: 1.5; }
+
+/* Spec table */
+.spec-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.spec-table th, .spec-table td { padding: var(--sp-3) var(--sp-4); text-align: left; border-bottom: 1px solid var(--metly-mist); }
+.spec-table th { font-family: var(--metly-font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--metly-graphite); }
+.spec-table td.mono { font-family: var(--metly-font-mono); font-size: 12px; }
+.spec-table tr:last-child td { border-bottom: 0; }
+
+</style>
+</head>
+<body>
+
+<div class="shell">
+
+  <!-- ─────────────── Sidebar nav ─────────────── -->
+  <aside class="side">
+    <div class="side-brand">
+      <svg class="side-brand-mark" viewBox="0 0 100 100">
+        <defs>
+          <linearGradient id="sb" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7B61FF"/>
+            <stop offset="100%" stop-color="#00E6FF"/>
+          </linearGradient>
+        </defs>
+        <g stroke="url(#sb)" stroke-width="6" stroke-linecap="round" fill="none">
+          <line x1="14" y1="86" x2="14" y2="14"/>
+          <line x1="14" y1="14" x2="50" y2="50"/>
+          <line x1="50" y1="50" x2="86" y2="14"/>
+          <line x1="86" y1="14" x2="86" y2="86"/>
+        </g>
+        <circle cx="14" cy="14" r="4" fill="#00E6FF"/>
+        <circle cx="86" cy="14" r="4" fill="#7B61FF"/>
+        <circle cx="50" cy="50" r="5" fill="#00E6FF"/>
+        <circle cx="14" cy="86" r="4" fill="#7B61FF"/>
+        <circle cx="86" cy="86" r="4" fill="#00E6FF"/>
+      </svg>
+      <div>
+        <div class="side-brand-name">MET<b>LY</b></div>
+        <div class="side-meta">Brand book v1.0</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <div class="nav-section">Esencia</div>
+      <a href="#intro"><span>Introducción</span><span class="num">01</span></a>
+      <a href="#concepto"><span>Concepto</span><span class="num">02</span></a>
+      <a href="#mision"><span>Misión &amp; visión</span><span class="num">03</span></a>
+      <a href="#tono"><span>Voz &amp; tono</span><span class="num">04</span></a>
+
+      <div class="nav-section">Sistema visual</div>
+      <a href="#logo"><span>Logo</span><span class="num">05</span></a>
+      <a href="#color"><span>Color</span><span class="num">06</span></a>
+      <a href="#tipografia"><span>Tipografía</span><span class="num">07</span></a>
+      <a href="#iconos"><span>Iconografía</span><span class="num">08</span></a>
+      <a href="#mascota"><span>Compañero METLY</span><span class="num">09</span></a>
+
+      <div class="nav-section">Aplicaciones</div>
+      <a href="#aplicaciones"><span>Favicon &amp; app</span><span class="num">10</span></a>
+      <a href="#login"><span>Login screen</span><span class="num">11</span></a>
+      <a href="#email"><span>Email &amp; LinkedIn</span><span class="num">12</span></a>
+      <a href="#reglas"><span>Do's &amp; don'ts</span><span class="num">13</span></a>
+    </nav>
+
+    <div class="side-foot">
+      METD Consultores · 2026<br/>
+      La ciencia de lo simple.
+    </div>
+  </aside>
+
+  <!-- ─────────────── Main content ─────────────── -->
+  <main class="main">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-grid"></div>
+      <div class="hero-aurora"></div>
+      <div class="hero-aurora b"></div>
+      <div class="hero-content">
+        <div class="hero-tagline"><span class="dot"></span>Brand book · v1.0 · METD Consultores</div>
+        <h1>La ciencia<br/>de <em>lo simple.</em></h1>
+        <p class="hero-sub">Identidad de marca para METLY — el sistema integral de gestión que convierte el rigor normativo en una experiencia ágil, humana y sin fricción.</p>
+        <div class="hero-meta">
+          <div><span>Producto</span>SaaS B2B · Multi-tenant</div>
+          <div><span>Mercado</span>Colombia · LATAM</div>
+          <div><span>Origen</span>METD Consultores</div>
+          <div><span>Sector</span>SST · Calidad · Cumplimiento</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 01 Intro -->
+    <section class="chapter" id="intro">
+      <div class="eyebrow">01 · Introducción</div>
+      <h2 class="h1">¿Qué es METLY?</h2>
+      <p class="lede">METLY es el brazo tecnológico de METD Consultores: una plataforma de gobernanza integral que unifica SST, Calidad, Medicina Laboral y Cumplimiento Normativo en un solo sistema operativo.</p>
+
+      <div style="height: var(--sp-7);"></div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="eyebrow">Filosofía</div>
+          <h3 class="h3">Simplicidad radical</h3>
+          <p class="body">Eliminamos la burocracia para que las empresas se enfoquen en lo que importa: su gente y su crecimiento. Cada flujo está diseñado para ejecutarse sin capacitación extensa.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Filosofía</div>
+          <h3 class="h3">Humanidad digital</h3>
+          <p class="body">La tecnología es el medio, la gente es el fin. Nunca hablamos de "procesos" sin pensar en el bienestar del trabajador que está al final de la línea.</p>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-7);"></div>
+
+      <div class="mantra">
+        <div class="mantra-inner">
+          <div class="eyebrow" style="color: rgba(255,255,255,0.7); margin-bottom: var(--sp-4);">Mantra de marca</div>
+          <blockquote>"La solidez de la métrica, la agilidad del mañana."</blockquote>
+          <cite>— METLY</cite>
+        </div>
+      </div>
+    </section>
+
+    <!-- 02 Concepto -->
+    <section class="chapter" id="concepto">
+      <div class="eyebrow">02 · Concepto</div>
+      <h2 class="h1">MET <span style="color: var(--metly-cyan);">·</span> LY</h2>
+      <p class="lede">El nombre captura la dualidad de la marca: el ancla del rigor técnico y el motor de la agilidad digital.</p>
+
+      <div style="height: var(--sp-7);"></div>
+
+      <div class="grid-2">
+        <div class="card dark">
+          <div class="eyebrow" style="color: var(--metly-violet-soft);">El ancla</div>
+          <h3 class="h3" style="font-size: 64px; letter-spacing: -0.04em;">MET</h3>
+          <p class="body" style="color: var(--metly-mist);"><strong style="color: white;">Medicina · Metodología · Métricas.</strong></p>
+          <p class="body" style="color: var(--metly-mist);">Seguridad, respaldo médico, precisión matemática y el peso de la experiencia heredada de METD Consultores. Es el rigor que el cumplimiento exige.</p>
+        </div>
+        <div class="card" style="background: var(--grad-violet-cyan); color: white; border: none;">
+          <div class="eyebrow" style="color: rgba(255,255,255,0.85);">El motor</div>
+          <h3 class="h3" style="font-size: 64px; letter-spacing: -0.04em; color: white;">LY</h3>
+          <p class="body" style="color: rgba(255,255,255,0.92);"><strong style="color: white;">Lightly · Easily · Continuously.</strong></p>
+          <p class="body" style="color: rgba(255,255,255,0.92);">Modernidad, automatización, reducción de carga administrativa. Una herramienta que trabaja en tiempo real, 24/7, sin interrumpir la operación.</p>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-7);"></div>
+
+      <h3 class="h3">El ecosistema</h3>
+      <p class="body" style="margin-bottom: var(--sp-5);">METLY se compone de módulos especializados que comparten el mismo lenguaje, datos y experiencia.</p>
+
+      <div class="module-list">
+        <div class="module">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4Z"/></svg></div>
+          <div><h4>METLY Safety</h4><p>SST: gestión de riesgos, accidentes, ausentismo y vigilancia epidemiológica.</p></div>
+        </div>
+        <div class="module">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+          <div><h4>METLY Quality</h4><p>ISO 9001: auditorías, control de procesos, no conformidades, mejora continua.</p></div>
+        </div>
+        <div class="module">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/></svg></div>
+          <div><h4>METLY Compliance</h4><p>Matriz legal viva, alertas de vencimientos, radar normativo por sector.</p></div>
+        </div>
+        <div class="module">
+          <div class="module-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg></div>
+          <div><h4>METLY Pulse</h4><p>Indicadores ejecutivos, dashboards en vivo y reportes a entidades.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 Misión -->
+    <section class="chapter" id="mision">
+      <div class="eyebrow">03 · Identidad corporativa</div>
+      <h2 class="h1">Hacia dónde vamos.</h2>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="eyebrow">Misión</div>
+          <p class="body" style="font-size: 18px;">Simplificar la gestión de la Seguridad, la Calidad y el Cumplimiento mediante tecnología intuitiva, eliminando las barreras administrativas para proteger la vida de los trabajadores y asegurar la excelencia operativa de las organizaciones.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Visión</div>
+          <p class="body" style="font-size: 18px;">Convertirnos en el estándar digital de gestión corporativa integral en el mercado hispanohablante, donde cada dato se transforme en bienestar y cada proceso en una experiencia ágil, inteligente y preventiva.</p>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-7);"></div>
+
+      <h3 class="h3">Cuatro promesas, sin asteriscos.</h3>
+      <div class="grid-4" style="margin-top: var(--sp-4);">
+        <div class="card">
+          <div class="t-mono" style="color: var(--metly-cyan); font-size: 22px; font-weight: 600;">01</div>
+          <h4 style="font-family: var(--metly-font-display); margin: 8px 0 4px;">Visión 360</h4>
+          <p style="font-size: 13px; color: var(--metly-graphite); margin: 0; line-height: 1.5;">Unificación de departamentos que tradicionalmente trabajan aislados.</p>
+        </div>
+        <div class="card">
+          <div class="t-mono" style="color: var(--metly-cyan); font-size: 22px; font-weight: 600;">02</div>
+          <h4 style="font-family: var(--metly-font-display); margin: 8px 0 4px;">Prevención activa</h4>
+          <p style="font-size: 13px; color: var(--metly-graphite); margin: 0; line-height: 1.5;">Notificaciones antes de vencimientos o cambios legales.</p>
+        </div>
+        <div class="card">
+          <div class="t-mono" style="color: var(--metly-cyan); font-size: 22px; font-weight: 600;">03</div>
+          <h4 style="font-family: var(--metly-font-display); margin: 8px 0 4px;">Experticia médica</h4>
+          <p style="font-size: 13px; color: var(--metly-graphite); margin: 0; line-height: 1.5;">Metodología probada de METD Consultores embebida.</p>
+        </div>
+        <div class="card">
+          <div class="t-mono" style="color: var(--metly-cyan); font-size: 22px; font-weight: 600;">04</div>
+          <h4 style="font-family: var(--metly-font-display); margin: 8px 0 4px;">UX superior</h4>
+          <p style="font-size: 13px; color: var(--metly-graphite); margin: 0; line-height: 1.5;">Interfaz lista para usar sin capacitaciones extensas.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 Voz y tono -->
+    <section class="chapter" id="tono">
+      <div class="eyebrow">04 · Voz &amp; tono</div>
+      <h2 class="h1">Cómo habla METLY.</h2>
+      <p class="lede">Profesional pero cercano. Le hablamos al usuario de tú, sin jerga normativa innecesaria. Optimismo sobre miedo: blindaje, no multas.</p>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="do-dont">
+        <div class="col do">
+          <h4>✓ Sí decimos</h4>
+          <ul>
+            <li>"Tu matriz legal está al día. Te avisamos antes de cualquier cambio."</li>
+            <li>"En tres clics, capturas el incidente y notificas a la ARL."</li>
+            <li>"METLY revisa por ti. Tú decides."</li>
+            <li>"Hoy, 4 de tus 12 actividades quedaron listas. Vas bien."</li>
+          </ul>
+        </div>
+        <div class="col dont">
+          <h4>✗ No decimos</h4>
+          <ul>
+            <li>"De conformidad con la Resolución 0312 de 2019, deberá usted…"</li>
+            <li>"Sistema de gestión documental para administración de evidencias."</li>
+            <li>"Si no lo hace, podría ser sancionado."</li>
+            <li>"Estimado usuario, sírvase diligenciar el formulario."</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="eyebrow">Atributo</div>
+          <h4 class="h3">Claro</h4>
+          <p class="body">Frases cortas. Verbos activos. Una idea por oración. Si necesita explicación, simplifica.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Atributo</div>
+          <h4 class="h3">Cercano</h4>
+          <p class="body">Tú, no usted. Hablamos como un colega experto, no como un manual. Empatía con la carga del rol SST.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Atributo</div>
+          <h4 class="h3">Optimista</h4>
+          <p class="body">El cumplimiento como blindaje, no como amenaza. La normativa como aliada, no como enemiga.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 Logo -->
+    <section class="chapter" id="logo">
+      <div class="eyebrow">05 · Sistema de logo</div>
+      <h2 class="h1">El logo.</h2>
+      <p class="lede">Tres direcciones bajo evaluación. Cada una expresa el ADN MET·LY desde un ángulo distinto. Recomendación: <strong>Dirección A — Nodo M</strong>.</p>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <!-- Dir A: Nodo M -->
+      <div>
+        <div class="logo-meta"><span>Dirección A · Nodo M <span style="color: var(--metly-cyan);">★ Recomendado</span></span><span>Isotipo + wordmark · Horizontal</span></div>
+        <div class="logo-stage">
+          <object data="brand/logos/logo-a-nodo-m.svg" type="image/svg+xml" style="width: 480px;"></object>
+        </div>
+        <div class="grid-2" style="margin-top: var(--sp-3);">
+          <div class="logo-stage dark"><object data="brand/logos/logo-a-nodo-m.svg" type="image/svg+xml" style="width: 100%; max-width: 380px; filter: invert(1) hue-rotate(180deg) brightness(1.4);"></object></div>
+          <div class="card">
+            <div class="eyebrow">Concepto</div>
+            <p class="body">Cuatro nodos conectados forman una <strong>M</strong> abierta. Sugiere red de datos, integración entre módulos, blindaje estructural. El nodo central pulsa con luz cyan: el corazón activo del sistema.</p>
+          </div>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <!-- Dir B -->
+      <div>
+        <div class="logo-meta"><span>Dirección B · Cápsula MET·LY</span><span>Isotipo + wordmark</span></div>
+        <div class="logo-stage">
+          <object data="brand/logos/logo-b-capsula.svg" type="image/svg+xml" style="width: 480px;"></object>
+        </div>
+        <div class="card" style="margin-top: var(--sp-3);">
+          <div class="eyebrow">Concepto</div>
+          <p class="body">Una cápsula partida en dos: el lado violeta (MET, rigor) y el lado cyan (LY, agilidad). Visualiza la dualidad fundamental de la marca. El punto cyan en el wordmark refuerza la lectura "MET·LY".</p>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <!-- Dir C -->
+      <div>
+        <div class="logo-meta"><span>Dirección C · Monograma orbital</span><span>Para favicon · app icon</span></div>
+        <div class="logo-stage">
+          <object data="brand/logos/logo-c-monograma.svg" type="image/svg+xml" style="width: 480px;"></object>
+        </div>
+        <div class="card" style="margin-top: var(--sp-3);">
+          <div class="eyebrow">Concepto</div>
+          <p class="body">Un monograma circular con un nodo en órbita continua: la metáfora del cumplimiento <em>activo</em>, ese sistema que nunca duerme. Funciona excepcionalmente bien en formatos pequeños (favicon, app icon, avatar).</p>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-7);"></div>
+
+      <h3 class="h3">Reglas de uso</h3>
+      <table class="spec-table">
+        <tr><th>Regla</th><th>Especificación</th></tr>
+        <tr><td>Área de respeto</td><td class="mono">Mínimo igual a la altura de la "M" del wordmark, en todos los lados.</td></tr>
+        <tr><td>Tamaño mínimo digital</td><td class="mono">Logo horizontal: 120 px de ancho · Isotipo solo: 24 px</td></tr>
+        <tr><td>Tamaño mínimo impreso</td><td class="mono">Logo horizontal: 30 mm de ancho · Isotipo solo: 8 mm</td></tr>
+        <tr><td>Versión monocromática</td><td class="mono">Sobre fondos claros: midnight (#1A0033). Sobre fondos oscuros: paper (#FAF8FF).</td></tr>
+        <tr><td>Fondos prohibidos</td><td class="mono">Imágenes ruidosas, gradientes que reduzcan contraste, colores fuera de la paleta.</td></tr>
+      </table>
+    </section>
+
+    <!-- 06 Color -->
+    <section class="chapter" id="color">
+      <div class="eyebrow">06 · Color</div>
+      <h2 class="h1">Paleta.</h2>
+      <p class="lede">Midnight Purple como ancla, Electric Violet como acento estratégico, Neon Cyan como pulso tecnológico. Tres colores que conviven con disciplina.</p>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <h3 class="h3">Brand core</h3>
+      <div class="grid-3">
+        <div class="swatch dark" style="background: #1A0033;">
+          <div>
+            <div class="t-mono" style="color: rgba(255,255,255,0.7); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;">Primario · Ancla</div>
+            <div class="name">Midnight Purple</div>
+          </div>
+          <div class="vals">
+            HEX&nbsp;&nbsp;&nbsp;#1A0033<br/>
+            RGB&nbsp;&nbsp;&nbsp;26 · 0 · 51<br/>
+            CMYK&nbsp;&nbsp;88 · 100 · 30 · 50<br/>
+            PMS&nbsp;&nbsp;&nbsp;Pantone 2755 C
+          </div>
+        </div>
+        <div class="swatch dark" style="background: #7B61FF;">
+          <div>
+            <div class="t-mono" style="color: rgba(255,255,255,0.85); font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;">Acento · Estratégico</div>
+            <div class="name">Electric Violet</div>
+          </div>
+          <div class="vals">
+            HEX&nbsp;&nbsp;&nbsp;#7B61FF<br/>
+            RGB&nbsp;&nbsp;&nbsp;123 · 97 · 255<br/>
+            CMYK&nbsp;&nbsp;60 · 65 · 0 · 0<br/>
+            PMS&nbsp;&nbsp;&nbsp;Pantone 2725 C
+          </div>
+        </div>
+        <div class="swatch" style="background: #00E6FF; color: #1A0033;">
+          <div>
+            <div class="t-mono" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.12em;">Acento · Tecnológico</div>
+            <div class="name">Neon Cyan</div>
+          </div>
+          <div class="vals">
+            HEX&nbsp;&nbsp;&nbsp;#00E6FF<br/>
+            RGB&nbsp;&nbsp;&nbsp;0 · 230 · 255<br/>
+            CMYK&nbsp;&nbsp;65 · 0 · 5 · 0<br/>
+            PMS&nbsp;&nbsp;&nbsp;Pantone 311 C
+          </div>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <h3 class="h3">Neutros</h3>
+      <div class="color-row">
+        <div style="background: #FFFFFF; color: #1A0033; border: 1px solid var(--metly-mist);"><span><b>White</b><br/>#FFFFFF</span></div>
+        <div style="background: #FAF8FF; color: #1A0033;"><span><b>Paper</b><br/>#FAF8FF</span></div>
+        <div style="background: #ECE7F7; color: #1A0033;"><span><b>Mist</b><br/>#ECE7F7</span></div>
+        <div style="background: #BFB8D1; color: #1A0033;"><span><b>Stone</b><br/>#BFB8D1</span></div>
+        <div style="background: #404040; color: white;"><span><b>Graphite</b><br/>#404040</span></div>
+        <div style="background: #14081F; color: white;"><span><b>Ink</b><br/>#14081F</span></div>
+      </div>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <h3 class="h3">Semánticos · estados de UI</h3>
+      <div class="color-row">
+        <div style="background: #2EE6A8; color: #0E001D;"><span><b>Success</b><br/>#2EE6A8</span></div>
+        <div style="background: #FFB547; color: #0E001D;"><span><b>Warning</b><br/>#FFB547</span></div>
+        <div style="background: #FF5C7A; color: white;"><span><b>Danger</b><br/>#FF5C7A</span></div>
+        <div style="background: #00E6FF; color: #0E001D;"><span><b>Info</b><br/>#00E6FF</span></div>
+      </div>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <h3 class="h3">Gradientes oficiales</h3>
+      <div class="grid-3">
+        <div class="swatch dark" style="background: var(--grad-aurora);">
+          <div><div class="name">Aurora</div></div>
+          <div class="vals">linear-gradient(135deg, #1A0033 0%, #5840E6 45%, #00E6FF 100%)</div>
+        </div>
+        <div class="swatch dark" style="background: var(--grad-violet-cyan);">
+          <div><div class="name">Violet → Cyan</div></div>
+          <div class="vals">linear-gradient(120deg, #7B61FF, #00E6FF)</div>
+        </div>
+        <div class="swatch dark" style="background: var(--grad-midnight);">
+          <div><div class="name">Midnight</div></div>
+          <div class="vals">linear-gradient(180deg, #1A0033, #0E001D)</div>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="card">
+        <div class="eyebrow">Proporción de uso (regla 60·30·10)</div>
+        <p class="body">60% neutros (paper · midnight) · 30% violeta (estructura, énfasis) · 10% cyan (pulso, datos vivos, llamados a la acción). El cyan es valioso porque es escaso.</p>
+        <div style="display: flex; height: 24px; border-radius: 6px; overflow: hidden; margin-top: var(--sp-3);">
+          <div style="flex: 60; background: #1A0033;"></div>
+          <div style="flex: 30; background: #7B61FF;"></div>
+          <div style="flex: 10; background: #00E6FF;"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 07 Tipografía -->
+    <section class="chapter" id="tipografia">
+      <div class="eyebrow">07 · Tipografía</div>
+      <h2 class="h1">Tipografía.</h2>
+      <p class="lede">Dos familias sans-serif geométricas que conviven con orden. Display para presencia, texto para lectura, mono para datos.</p>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="type-spec">
+        <div class="meta">
+          <b>Display</b>
+          Space Grotesk<br/>
+          Pesos: 500 · 600 · 700<br/>
+          Para: titulares, wordmark, headlines<br/>
+          Tracking: −2% a −4%<br/>
+          <a href="https://fonts.google.com/specimen/Space+Grotesk" style="color: var(--metly-violet);">Google Fonts ↗</a>
+        </div>
+        <div>
+          <div class="type-sample display" style="font-size: 88px; font-weight: 600; letter-spacing: -0.03em; line-height: 0.95;">La ciencia<br/>de lo simple.</div>
+          <div class="type-sample display" style="font-size: 22px; color: var(--metly-graphite); margin-top: var(--sp-3);">Aa · Bb · Cc · 0123456789 · ¡? %&amp;</div>
+        </div>
+      </div>
+
+      <div class="type-spec">
+        <div class="meta">
+          <b>Texto</b>
+          Geist<br/>
+          Pesos: 400 · 500 · 600<br/>
+          Para: párrafos, UI, labels<br/>
+          Tracking: 0<br/>
+          <a href="https://fonts.google.com/specimen/Geist" style="color: var(--metly-violet);">Google Fonts ↗</a>
+        </div>
+        <div>
+          <div class="type-sample text" style="font-size: 28px; line-height: 1.4;">Cumplimiento activo, no estático. METLY revisa la matriz por ti y te avisa antes que la norma cambie.</div>
+          <div class="type-sample text" style="font-size: 14px; color: var(--metly-graphite); margin-top: var(--sp-3);">Aa · Bb · Cc · 0123456789 · The quick brown fox jumps over the lazy dog.</div>
+        </div>
+      </div>
+
+      <div class="type-spec">
+        <div class="meta">
+          <b>Mono</b>
+          Geist Mono<br/>
+          Pesos: 400 · 500<br/>
+          Para: datos, IDs, eyebrows, código<br/>
+          Tracking: +12% (uppercase)<br/>
+          <a href="https://fonts.google.com/specimen/Geist+Mono" style="color: var(--metly-violet);">Google Fonts ↗</a>
+        </div>
+        <div>
+          <div class="type-sample mono" style="font-size: 24px;">RES-2024-0871 · 99.4% uptime</div>
+          <div class="type-sample mono" style="font-size: 11px; text-transform: uppercase; letter-spacing: 0.18em; color: var(--metly-violet); margin-top: var(--sp-3);">Eyebrow · etiquetas · metadatos</div>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-5);"></div>
+
+      <h3 class="h3">Escala modular</h3>
+      <table class="spec-table">
+        <tr><th>Token</th><th>Tamaño</th><th>Uso</th></tr>
+        <tr><td class="mono">--fs-12</td><td class="mono">12 / 16</td><td>Eyebrows, captions, mono labels</td></tr>
+        <tr><td class="mono">--fs-14</td><td class="mono">14 / 22</td><td>UI text, controles, inputs</td></tr>
+        <tr><td class="mono">--fs-16</td><td class="mono">16 / 26</td><td>Body por defecto</td></tr>
+        <tr><td class="mono">--fs-22</td><td class="mono">22 / 32</td><td>Lede, subtítulos</td></tr>
+        <tr><td class="mono">--fs-28</td><td class="mono">28 / 36</td><td>H3, encabezados internos</td></tr>
+        <tr><td class="mono">--fs-36</td><td class="mono">36 / 44</td><td>H2, titulares de sección</td></tr>
+        <tr><td class="mono">--fs-48 / 64</td><td class="mono">48–72</td><td>H1, page titles</td></tr>
+        <tr><td class="mono">--fs-88 / 120</td><td class="mono">88–120</td><td>Hero / display</td></tr>
+      </table>
+    </section>
+
+    <!-- 08 Iconografía -->
+    <section class="chapter" id="iconos">
+      <div class="eyebrow">08 · Iconografía</div>
+      <h2 class="h1">Iconos.</h2>
+      <p class="lede">Sistema de íconos lineales: trazo de 2px (en grid 24×24), esquinas suavemente redondeadas, sin relleno. Tono midnight; cyan o violeta solo como acento.</p>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="icon-grid" id="icons">
+        <!-- Filled programmatically below -->
+      </div>
+    </section>
+
+    <!-- 09 Mascot -->
+    <section class="chapter" id="mascota">
+      <div class="eyebrow">09 · Compañero METLY</div>
+      <h2 class="h1">El compañero.</h2>
+      <p class="lede">No es una mascota infantil. Es un colega digital: formas redondeadas, presencia confiable, núcleo de luz cyan que pulsa cuando la plataforma está trabajando por ti.</p>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="mascot-grid">
+        <div class="mascot-card">
+          <object data="brand/mascot/companero-saludo.svg" type="image/svg+xml" style="height: 240px;"></object>
+          <div class="pose">Saludo</div>
+          <div class="pose-sub">Bienvenida · onboarding · login</div>
+        </div>
+        <div class="mascot-card">
+          <object data="brand/mascot/companero-analizando.svg" type="image/svg+xml" style="height: 240px;"></object>
+          <div class="pose">Analizando</div>
+          <div class="pose-sub">Loading · procesando · radar legal</div>
+        </div>
+        <div class="mascot-card">
+          <object data="brand/mascot/companero-senalando.svg" type="image/svg+xml" style="height: 240px;"></object>
+          <div class="pose">Insight</div>
+          <div class="pose-sub">Hallazgos · hits positivos · tips</div>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="eyebrow">Anatomía</div>
+          <p class="body"><strong>Cuerpo:</strong> forma de gota suave, gradiente violeta. <strong>Núcleo:</strong> luz cyan (el "logo" en el pecho). <strong>Brazos:</strong> manchas orgánicas, sin manos detalladas. <strong>Ojos:</strong> mínimos, expresivos por la forma de la sonrisa cyan.</p>
+        </div>
+        <div class="card">
+          <div class="eyebrow">Cuándo aparece</div>
+          <p class="body">Onboarding, estados vacíos, mensajes de éxito, tutoriales, comunicaciones por email, redes sociales. <strong>Nunca</strong> en errores graves, alertas legales o pantallas críticas — ahí la marca habla en serio.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10 Aplicaciones / favicon -->
+    <section class="chapter" id="aplicaciones">
+      <div class="eyebrow">10 · Aplicaciones</div>
+      <h2 class="h1">Favicon &amp; app icon.</h2>
+      <p class="lede">Para tamaños menores a 64 px usamos el monograma orbital (Dirección C). Mantiene legibilidad y memorabilidad incluso a 16 px.</p>
+
+      <div style="height: var(--sp-5);"></div>
+
+      <div class="card">
+        <div class="favicon-row">
+          <div class="favicon f128"><svg class="ico-mark" viewBox="0 0 100 100"><defs><linearGradient id="fav1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#00E6FF"/></linearGradient></defs><circle cx="50" cy="50" r="48" fill="none" stroke="#FAF8FF" stroke-width="2.5" opacity="0.3"/><path d="M 50 2 A 48 48 0 1 1 5 75" fill="none" stroke="url(#fav1)" stroke-width="6" stroke-linecap="round"/><circle cx="5" cy="75" r="7" fill="#00E6FF"/><text x="50" y="65" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="46" fill="#FAF8FF" letter-spacing="-2">M</text></svg></div>
+          <div class="favicon f64"><svg class="ico-mark" viewBox="0 0 100 100"><defs><linearGradient id="fav2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#00E6FF"/></linearGradient></defs><path d="M 50 2 A 48 48 0 1 1 5 75" fill="none" stroke="url(#fav2)" stroke-width="6" stroke-linecap="round"/><circle cx="5" cy="75" r="7" fill="#00E6FF"/><text x="50" y="65" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="46" fill="#FAF8FF" letter-spacing="-2">M</text></svg></div>
+          <div class="favicon f32"><svg class="ico-mark" viewBox="0 0 100 100"><defs><linearGradient id="fav3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#00E6FF"/></linearGradient></defs><path d="M 50 2 A 48 48 0 1 1 5 75" fill="none" stroke="url(#fav3)" stroke-width="8" stroke-linecap="round"/><circle cx="5" cy="75" r="9" fill="#00E6FF"/><text x="50" y="68" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="52" fill="#FAF8FF" letter-spacing="-2">M</text></svg></div>
+          <div class="favicon f16"><svg class="ico-mark" viewBox="0 0 100 100"><text x="50" y="78" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="92" fill="#00E6FF" letter-spacing="-4">M</text></svg></div>
+
+          <div style="margin-left: auto; font-family: var(--metly-font-mono); font-size: 11px; color: var(--metly-graphite); text-transform: uppercase; letter-spacing: 0.08em;">
+            128px · 64px · 32px · 16px (apple-touch · favicon · pwa)
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 11 Login -->
+    <section class="chapter" id="login">
+      <div class="eyebrow">11 · Login screen</div>
+      <h2 class="h1">Login.</h2>
+      <p class="lede">El primer encuentro con la marca: midnight + aurora glow + un mensaje claro. Sin distracciones.</p>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="login-mock">
+        <div class="login-side">
+          <div class="lm-mark">
+            <svg width="32" height="32" viewBox="0 0 100 100"><defs><linearGradient id="lm1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#00E6FF"/></linearGradient></defs><g stroke="url(#lm1)" stroke-width="6" stroke-linecap="round" fill="none"><line x1="14" y1="86" x2="14" y2="14"/><line x1="14" y1="14" x2="50" y2="50"/><line x1="50" y1="50" x2="86" y2="14"/><line x1="86" y1="14" x2="86" y2="86"/></g><circle cx="50" cy="50" r="6" fill="#00E6FF"/></svg>
+            MET<span style="color: var(--metly-cyan);">LY</span>
+          </div>
+          <div>
+            <h2>La gestión<br/>al día.<br/>Sin esfuerzo.</h2>
+            <p>SST, Calidad y Cumplimiento — todo en un solo lugar, hablando entre sí.</p>
+          </div>
+          <div class="lm-foot">METD Consultores · v2026.04</div>
+        </div>
+        <div class="login-card">
+          <h3 class="h">Bienvenido de vuelta</h3>
+          <p class="h-sub">Ingresa con tu correo corporativo.</p>
+          <label>Correo</label>
+          <input type="email" placeholder="tu@empresa.com" value="laura@acme.co"/>
+          <label>Contraseña</label>
+          <input type="password" placeholder="••••••••" value="••••••••••"/>
+          <button class="btn">Entrar a METLY</button>
+          <p style="font-family: var(--metly-font-mono); font-size: 11px; color: var(--metly-graphite); text-align: center; margin: var(--sp-4) 0 0;">¿Olvidaste tu contraseña?</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 12 Email + LinkedIn -->
+    <section class="chapter" id="email">
+      <div class="eyebrow">12 · Comunicaciones</div>
+      <h2 class="h1">Email &amp; redes.</h2>
+      <p class="lede">Plantillas que respiran la marca, sin sobrecargar de adornos.</p>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <h3 class="h3">LinkedIn cover · 1584 × 396</h3>
+      <div class="li-cover">
+        <div class="li-text">
+          <h3>La gestión.<br/><em>Al día.</em></h3>
+          <p>METLY · SST · Calidad · Cumplimiento</p>
+        </div>
+        <div class="li-mark">
+          <svg viewBox="0 0 480 140"><defs><linearGradient id="li1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#00E6FF"/></linearGradient></defs><g transform="translate(20,20)"><g stroke="url(#li1)" stroke-width="6" stroke-linecap="round" fill="none"><line x1="10" y1="86" x2="10" y2="14"/><line x1="10" y1="14" x2="50" y2="50"/><line x1="50" y1="50" x2="90" y2="14"/><line x1="90" y1="14" x2="90" y2="86"/></g><circle cx="10" cy="14" r="4" fill="#00E6FF"/><circle cx="90" cy="14" r="4" fill="#7B61FF"/><circle cx="50" cy="50" r="5" fill="#00E6FF"/><circle cx="10" cy="86" r="4" fill="#7B61FF"/><circle cx="90" cy="86" r="4" fill="#00E6FF"/></g><g transform="translate(150,0)" font-family="Space Grotesk" font-weight="600" font-size="78" fill="#FAF8FF" letter-spacing="-2"><text x="0" y="92">METLY</text></g></svg>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <h3 class="h3">Plantilla email transaccional</h3>
+      <div class="email-mock">
+        <div class="em-head">
+          <div class="lm-mark">
+            <svg width="28" height="28" viewBox="0 0 100 100"><defs><linearGradient id="em1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7B61FF"/><stop offset="1" stop-color="#00E6FF"/></linearGradient></defs><g stroke="url(#em1)" stroke-width="8" stroke-linecap="round" fill="none"><line x1="14" y1="86" x2="14" y2="14"/><line x1="14" y1="14" x2="50" y2="50"/><line x1="50" y1="50" x2="86" y2="14"/><line x1="86" y1="14" x2="86" y2="86"/></g><circle cx="50" cy="50" r="7" fill="#00E6FF"/></svg>
+            MET<span style="color: var(--metly-cyan);">LY</span>
+          </div>
+        </div>
+        <div class="em-body">
+          <h3>Hola, Laura — tienes 3 vencimientos esta semana.</h3>
+          <p>Tu radar normativo detectó tres requisitos legales que vencen antes del viernes. Te dejamos el resumen para que decidas con calma:</p>
+          <ul>
+            <li><strong>Reporte ATEL</strong> — vence martes 28 · 2 días</li>
+            <li><strong>Capacitación COPASST</strong> — vence jueves 30 · 4 días</li>
+            <li><strong>Examen periódico (3 empleados)</strong> — vence viernes 31 · 5 días</li>
+          </ul>
+          <a href="#" class="em-cta">Ver mi panel METLY →</a>
+          <p style="font-size: 13px; color: var(--metly-graphite);">Si necesitas mover una fecha, hazlo desde el panel. Cualquier cambio queda registrado en la trazabilidad.</p>
+        </div>
+        <div class="em-foot">METD Consultores · Bogotá · CO &nbsp;&nbsp;·&nbsp;&nbsp; metly.co</div>
+      </div>
+    </section>
+
+    <!-- 13 Reglas -->
+    <section class="chapter" id="reglas">
+      <div class="eyebrow">13 · Reglas finales</div>
+      <h2 class="h1">Lo que sí y lo que no.</h2>
+      <p class="lede">El brand book vive en el uso diario. Estas son las salvaguardas para que METLY siempre se vea METLY.</p>
+
+      <div style="height: var(--sp-6);"></div>
+
+      <div class="do-dont">
+        <div class="col do">
+          <h4>✓ Hazlo</h4>
+          <ul>
+            <li>Usa el área de respeto en cada aplicación del logo.</li>
+            <li>Mantén la regla 60·30·10 en composiciones de color.</li>
+            <li>Usa el cyan como pulso (datos vivos, CTAs, status).</li>
+            <li>Hablale al usuario de tú, con frases cortas.</li>
+            <li>Usa el Compañero METLY en momentos amables (onboarding, éxito).</li>
+            <li>Pide siempre los archivos vectoriales (.svg, .ai) para impresión.</li>
+          </ul>
+        </div>
+        <div class="col dont">
+          <h4>✗ No lo hagas</h4>
+          <ul>
+            <li>No estires, rotes ni cambies los colores del logo.</li>
+            <li>No uses cyan para grandes superficies — pierde su valor.</li>
+            <li>No uses el Compañero en errores legales o alertas serias.</li>
+            <li>No mezcles más de tres pesos tipográficos en una pieza.</li>
+            <li>No agregues efectos (sombra, brillo extra, glitch) al wordmark.</li>
+            <li>No uses el logo sobre imágenes ruidosas o gradientes ajenos.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="height: var(--sp-7);"></div>
+
+      <div class="card dark" style="text-align: center; padding: var(--sp-8);">
+        <div class="eyebrow" style="color: var(--metly-cyan-soft);">Una última cosa</div>
+        <h3 class="h3" style="font-size: 36px; max-width: 24ch; margin: var(--sp-3) auto;">La marca es una promesa. La gente al final de la línea es quien la cobra.</h3>
+        <p class="body" style="color: var(--metly-mist); max-width: 50ch; margin: 0 auto;">Cada decisión de diseño, copy o producto debe responder: ¿esto le hace la vida más simple a alguien que está cuidando la salud de otros? Si la respuesta es sí, vamos.</p>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+<script>
+// Build icon set
+const iconSet = [
+  ['Safety',  '<path d="M12 2 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-4Z"/><path d="m9 12 2 2 4-4"/>'],
+  ['Quality', '<circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/>'],
+  ['Compliance','<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 13h6M9 17h4"/>'],
+  ['Pulse',   '<path d="M3 12h4l3-9 4 18 3-9h4"/>'],
+  ['Risk',    '<path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><circle cx="12" cy="17" r="0.8" fill="currentColor"/>'],
+  ['Inspeccion','<circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.6" y2="16.6"/>'],
+  ['Capacit.', '<path d="M2 7l10-4 10 4-10 4-10-4z"/><path d="M6 9v5c0 2 3 4 6 4s6-2 6-4V9"/>'],
+  ['Empleados','<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>'],
+  ['Reportes','<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><line x1="8" y1="13" x2="8" y2="18"/><line x1="12" y1="11" x2="12" y2="18"/><line x1="16" y1="15" x2="16" y2="18"/>'],
+  ['Auditoría','<rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M9 16l2 2 4-4"/>'],
+  ['Doc',     '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/>'],
+  ['Firma',   '<path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/>'],
+  ['Alerta',  '<path d="M22 17a2 2 0 0 1-2 2H6l-4 4V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/>'],
+  ['EPP',     '<path d="M6 21V10l6-6 6 6v11"/><path d="M9 21v-6h6v6"/>'],
+  ['Vehículo','<path d="M5 17h14M5 17a2 2 0 0 1-2-2v-3l3-6h12l3 6v3a2 2 0 0 1-2 2"/><circle cx="7.5" cy="17.5" r="2"/><circle cx="16.5" cy="17.5" r="2"/>'],
+  ['Médico',  '<path d="M9 11h6M12 8v6"/><circle cx="12" cy="12" r="9"/>'],
+  ['Ambiental','<path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6"/>'],
+  ['Settings','<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>']
+];
+
+const iconGrid = document.getElementById('icons');
+iconSet.forEach(([label, body]) => {
+  const tile = document.createElement('div');
+  tile.className = 'icon-tile';
+  tile.innerHTML = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${body}</svg><div class="lbl">${label}</div>`;
+  iconGrid.appendChild(tile);
+});
+
+// Scroll spy
+const links = document.querySelectorAll('.nav a');
+const sections = [...document.querySelectorAll('section.chapter')];
+function spy() {
+  const y = window.scrollY + 100;
+  let active = sections[0]?.id;
+  for (const s of sections) {
+    if (s.offsetTop <= y) active = s.id;
+  }
+  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + active));
+}
+window.addEventListener('scroll', spy, { passive: true });
+spy();
+</script>
+
+</body>
+</html>
